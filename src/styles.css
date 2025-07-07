@@ -1,0 +1,101 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+  }
+  
+  /* Estrutura principal */
+  .papai {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+  }
+  
+  /* imagem do carro */
+  .img-ford {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .img-ford img {
+    max-width: 90%;
+    height: auto;
+  }
+  
+  /* Container do formulário */
+  .container-form {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+  }
+  
+  /* formulário */
+  .form {
+    width: 100%;
+    max-width: 350px;
+    flex-direction: column;
+  }
+  
+  /* Logo da Ford */
+  .form-img .logo {
+    margin-bottom: 20px;
+  }
+  
+  /* Título */
+  .forms h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Campos do formulário */
+  .forms form {
+    width: 100%;
+    display: flex;
+  }
+  
+  .forms input[type="email"],
+  .forms input[type="password"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Checkbox */
+  .checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+  
+  .checkbox input {
+    margin-right: 8px;
+  }
+  
+
+  .copy {
+    margin-top: 30px;
+    font-size: 12px;
+    color: #777;
+  }
+  
+  .terceira {
+    flex: 0.2;
+    background-color: #ffffff;
+  }
+  
+  
