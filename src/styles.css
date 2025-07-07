@@ -25,7 +25,7 @@ body, html {
   min-width: 400px;         /* Garante espaço mínimo pro carro */
   max-width: 60%;           /* Impede que tome a tela toda */
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   padding-left: 60px;
 }
@@ -34,7 +34,6 @@ body, html {
   width: 100%;              /* Ocupa todo o espaço da div pai */
   max-width: 600px;         /* Tamanho máximo ideal */
   height: auto;
-  margin-left: 15%;
 }
 
 
