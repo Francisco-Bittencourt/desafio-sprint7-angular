@@ -8,13 +8,23 @@
         <img src="/img/ford.png" alt="Logo da Ford" class="logo" />
       </div>
       <div class="forms">
-        <form>
+        <form (ngSubmit)="fazerLogin()">
           <h2>Boas-vindas</h2>
-          <input type="email" placeholder="Insira seu e-mail" required />
-          <input type="password" placeholder="Insira sua senha" required />
+          <input
+            type="text"
+            name="nome"
+            placeholder="Insira seu nome"
+            required
+          />
+          <input
+            type="password"
+            name="senha"
+            placeholder="Insira sua senha"
+            required
+          />
 
           <div class="checkbox">
-            <input type="checkbox" id="autoLogin" />
+            <input type="checkbox" id="autoLogin" name="lembrar" />
             <label for="autoLogin">Logar automaticamente</label>
           </div>
 
