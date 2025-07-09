@@ -25,6 +25,10 @@
   margin-bottom: 2rem;
 }
 
+.sidebar-links {
+  cursor: pointer;
+}
+
 /* Esconde o checkbox */
 #menu-toggle {
   display: none;
@@ -106,7 +110,7 @@
 }
 
 .content.menu-ativo::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
