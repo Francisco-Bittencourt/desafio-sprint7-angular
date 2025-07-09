@@ -8,28 +8,36 @@
         <img src="/img/ford.png" alt="Logo da Ford" class="logo" />
       </div>
       <div class="forms">
+        <h2>Boas-vindas</h2>
         <form (ngSubmit)="fazerLogin()">
-          <h2>Boas-vindas</h2>
           <input
             type="text"
             name="nome"
+            id="nome"
             placeholder="Insira seu nome"
-            required
+            [(ngModel)]="nome"
           />
           <input
             type="password"
             name="senha"
             placeholder="Insira sua senha"
-            required
+            [(ngModel)]="senha"
           />
 
           <div class="checkbox">
-            <input type="checkbox" id="autoLogin" name="lembrar" />
+            <input
+              type="checkbox"
+              id="autoLogin"
+              name="lembrar"
+              [(ngModel)]="lembrar"
+            />
             <label for="autoLogin">Logar automaticamente</label>
           </div>
 
           <button type="submit">Entrar</button>
         </form>
+        <!-- Mensagem de erro para substituir o alert() -->
+        <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
       </div>
       <div class="copy">
         <p>&copy; 2025</p>
