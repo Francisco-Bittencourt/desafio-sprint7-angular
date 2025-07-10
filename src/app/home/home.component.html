@@ -10,17 +10,10 @@
         <a routerLink="home" class="sidebar-links">Home</a>
       </li>
       <li>
-        <a routerLink="dashboard" class="sidebar-links">Dashboard</a>
+        <a routerLink="/dashboard" class="sidebar-links">Dashboard</a>
       </li>
     </ul>
-
-    <!-- Menu -->
-    <!-- <ul class="menu">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Dashboard</a></li>
-    </ul> -->
   </div>
-
   <div class="content" [class.menu-ativo]="menuVisivel">
     <img src="/img/ranger.png" class="background-image" alt="Ford Ranger" />
     <div class="card">
@@ -29,4 +22,5 @@
       <a class="logout" href="#">Sair</a>
     </div>
   </div>
+  <router-outlet></router-outlet>
 </div>
