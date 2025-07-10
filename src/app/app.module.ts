@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { LoginModule } from './login/login.module';
 import { HomeModule } from './home/home.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { HomeModule } from './home/home.module';
     FormsModule,
     LoginModule,
     HomeModule,
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent],

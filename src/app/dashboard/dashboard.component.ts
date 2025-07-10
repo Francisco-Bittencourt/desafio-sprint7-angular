@@ -7,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
+currentImage: any;
+nextImage() {
+throw new Error('Method not implemented.');
+}
+prevImage() {
+throw new Error('Method not implemented.');
+}
 
 }
