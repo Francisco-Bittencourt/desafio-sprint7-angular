@@ -1,41 +1,62 @@
 <div class="main-page-layout">
   <app-sidebar></app-sidebar>
+
   <div class="dashboard-main-content">
     <h1 class="dashboard-title">Dashboard FORD</h1>
 
     <div class="cards-grid">
+      <!-- CARD 1: Veículo com formulário reativo -->
       <div class="card card-vehicle">
         <div class="card-title">Veículo</div>
         <div class="card-content">
-          <select class="vehicle-select">
-            <option value="ranger">Ranger</option>
-            <option value="mustang" selected>Mustang</option>
-            <option value="territory">Territory</option>
-            <option value="bronco_sport">Bronco Sport</option>
-          </select>
+          <form [formGroup]="selectCarForms">
+            <select class="vehicle-select" formControlName="carId">
+              <option value="">Selecione um veículo</option>
+              <!-- AQUI: Preenche o dropdown com os veículos carregados da API -->
+              <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
+                {{ vehicle.vehicle }}
+              </option>
+            </select>
+          </form>
+        </div>
+      </div>
+
+      <!-- Demais cards - Agora com os dados da API -->
+      <div class="card">
+        <div class="card-title">Total de Vendas</div>
+        <div class="card-content">
+          <!-- AQUI: Exibe o total de vendas -->
+          <span class="value">{{ totalSales | number }}</span>
+          <span class="unit">Unid</span>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-title">Total de Vendas</div>
-        <div class="card-content"><span class="unit">Unid</span></div>
-      </div>
-
-      <div class="card">
         <div class="card-title">Conectados</div>
-        <div class="card-content"><span class="unit">Unid</span></div>
+        <div class="card-content">
+          <!-- AQUI: Exibe o número de veículos conectados -->
+          <span class="value">{{ connectedVehicles | number }}</span>
+          <span class="unit">Unid</span>
+        </div>
       </div>
 
       <div class="card">
         <div class="card-title">Update Software</div>
-        <div class="card-content"><span class="unit">Unid</span></div>
+        <div class="card-content">
+          <!-- AQUI: Exibe o número de updates de software -->
+          <span class="value">{{ softwareUpdates | number }}</span>
+          <span class="unit">Unid</span>
+        </div>
       </div>
     </div>
 
+    <!-- Imagem do veículo -->
     <div class="car-image-container">
-      <img src="" alt="Ford" class="imagem do carro">
+      <!-- AQUI: Exibe a imagem do veículo selecionado -->
+      <img *ngIf="selectedVehicle" [src]="selectedVehicle.img" alt="Ford {{ selectedVehicle.vehicle }}" class="imagem do carro" />
     </div>
 
+    <!-- Tabela de dados -->
     <div class="table-container">
       <table>
         <thead>
@@ -49,15 +70,23 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+          <!-- AQUI: Exibe os detalhes do veículo na tabela, SOMENTE SE tivermos os dados -->
+          <tr *ngIf="vehicleData">
+            <!-- Para o VIN, estamos usando o ID do veículo por enquanto, já que o VIN real não vem na lista. -->
+            <td><input type="text"></td>
+            <td>{{ vehicleData.odometro | number }} Km</td>
+            <td>{{ vehicleData.nivelCombustivel }}%</td>
+            <td>{{ vehicleData.status === 'on' ? 'Ligado' : 'Desligado' }}</td>
+            <td>{{ vehicleData.lat }}</td>
+            <td>{{ vehicleData.long }}</td>
           </tr>
-          </tbody>
+          
+          <tr *ngIf="!vehicleData">
+            <td colspan="6" style="text-align: center; padding: 20px;">
+              Selecione um veículo para ver os detalhes ou os dados não foram encontrados.
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>

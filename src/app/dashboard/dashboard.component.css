@@ -3,33 +3,36 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  overflow: hidden; /* Adicionado para garantir que o scroll principal não apareça */
 }
 
 /* Contêiner principal da página: usa Flexbox para Sidebar e Conteúdo */
 .main-page-layout {
-  display: flex; 
-  min-height: 100vh;
+  display: flex;
+  height: 100vh; /* Alterado de min-height para height */
   width: 100%;
-  font-family: Arial, sans-serif; 
-  overflow: hidden;
+  font-family: Arial, sans-serif;
+  overflow: hidden; /* Esconde qualquer rolagem do layout principal */
 }
-
 
 .dashboard-main-content {
   flex-grow: 1;
-  padding: 20px; 
-  background-color: #f0f2f5; 
-  overflow-y: auto;
-  box-sizing: border-box; 
+  padding: 15px; /* Diminuído de 20px para 15px */
+  background-color: #f0f2f5;
+  box-sizing: border-box;
+
+  /* Flexbox para organizar o conteúdo interno em coluna e permitir rolagem controlada */
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ocupa 100% da altura de seu pai */
+  overflow-y: auto; /* Permite rolagem APENAS DENTRO deste contêiner */
 }
-
-
 
 .dashboard-title {
   text-align: center;
   color: #0f27ac;
-  margin-bottom: 30px;
-  font-size: 2.2em;
+  margin-bottom: 20px; /* Diminuído de 30px para 20px */
+  font-size: 1.8em; /* Diminuído de 2.2em para 1.8em */
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -37,9 +40,10 @@ html, body {
 
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  margin-bottom: 40px;
+  /* Talvez ajustar o minmax se os cards ficarem muito pequenos */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Diminuído minmax de 220px para 180px */
+  gap: 15px; /* Diminuído de 20px para 15px */
+  margin-bottom: 25px; /* Diminuído de 40px para 25px */
   justify-content: center;
 }
 
@@ -47,7 +51,7 @@ html, body {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 15px; /* Diminuído de 20px para 15px */
   text-align: center;
   transition: transform 0.2s ease-in-out;
 }
@@ -57,19 +61,19 @@ html, body {
 }
 
 .card-title {
-  font-size: 1.1em;
+  font-size: 1em; /* Diminuído de 1.1em para 1em */
   color: #666;
-  margin-bottom: 10px;
+  margin-bottom: 8px; /* Diminuído de 10px para 8px */
 }
 
 .card-content {
-  font-size: 1.8em;
+  font-size: 1.5em; /* Diminuído de 1.8em para 1.5em */
   font-weight: bold;
   color: #007bff;
 }
 
 .card-vehicle .card-content {
-  font-size: 1.2em;
+  font-size: 1em; /* Diminuído de 1.2em para 1em */
 }
 
 .unit {
@@ -97,14 +101,17 @@ html, body {
 
 .car-image-container {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 25px; /* Diminuído de 40px para 25px */
 }
 
-.car-image {
-  max-width: 80%;
+/* Ajuste para a imagem do carro */
+.car-image-container img { /* Ou .imagem-do-carro se essa for a classe na tag <img> */
+  max-width: 60%; /* Diminuído de 80% para 60% */
   height: auto;
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto;
 }
 
 .table-container {
@@ -112,7 +119,10 @@ html, body {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 15px; /* Diminuído de 20px para 15px */
+
+  flex-grow: 1; /* Permite que a tabela ocupe o espaço restante */
+  overflow-y: auto; /* Permite rolagem APENAS da tabela se seu conteúdo for muito longo */
 }
 
 table {
@@ -123,7 +133,7 @@ table {
 
 table th,
 table td {
-  padding: 12px 15px;
+  padding: 10px 12px; /* Diminuído de 12px 15px para 10px 12px */
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
@@ -133,7 +143,7 @@ table th {
   color: #495057;
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 0.9em;
+  font-size: 0.85em; /* Ligeiramente diminuído */
 }
 
 table tbody tr:nth-child(even) {
@@ -143,4 +153,3 @@ table tbody tr:nth-child(even) {
 table tbody tr:hover {
   background-color: #e2f0ff;
 }
-
