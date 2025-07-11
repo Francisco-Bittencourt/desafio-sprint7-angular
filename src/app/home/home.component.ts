@@ -5,8 +5,12 @@ import { Router } from '@angular/router';
   selector: 'app-home',
   standalone: false,
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
 export class HomeComponent {
-menuVisivel: any;
+  menuVisivel: any;
+  constructor(private router: Router) {}
+  toHome() {
+    this.router.navigate(['/homw']);
+  }
 }

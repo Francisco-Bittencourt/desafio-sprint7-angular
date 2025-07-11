@@ -6,12 +6,13 @@
 
   <ul>
     <li>
-      <a routerLink="/home" class="sidebar-links">Home</a>
+      <a (click)="toHome()" class="sidebar-links">Home</a>
     </li>
     <li>
       <a routerLink="/dashboard" class="sidebar-links">Dashboard</a>
     </li>
     <li>
-      <a (click)="logout()" class="sidebar-links">Logout</a> </li>
+      <a (click)="logout()" class="sidebar-links">Logout</a>
+    </li>
   </ul>
 </div>

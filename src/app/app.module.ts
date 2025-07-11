@@ -16,7 +16,6 @@ import { DashboardModule } from './dashboard/dashboard.module';
     FormsModule,
     LoginModule,
     HomeModule,
-    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent],
