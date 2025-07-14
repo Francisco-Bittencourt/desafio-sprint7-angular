@@ -154,7 +154,6 @@
     }
   }
   
-  /* CELULAR EXTRA PEQUENO */
   @media (max-width: 600px) {
     .container-form {
       max-width: 400px;

@@ -5,14 +5,12 @@
     <h1 class="dashboard-title">Dashboard FORD</h1>
 
     <div class="cards-grid">
-      <!-- CARD 1: Veículo com formulário reativo -->
       <div class="card card-vehicle">
         <div class="card-title">Veículo</div>
         <div class="card-content">
           <form [formGroup]="selectCarForms">
             <select class="vehicle-select" formControlName="carId">
               <option value="">Selecione um veículo</option>
-              <!-- AQUI: Preenche o dropdown com os veículos carregados da API -->
               <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
                 {{ vehicle.vehicle }}
               </option>
@@ -21,11 +19,9 @@
         </div>
       </div>
 
-      <!-- Demais cards - Agora com os dados da API -->
       <div class="card">
         <div class="card-title">Total de Vendas</div>
         <div class="card-content">
-          <!-- AQUI: Exibe o total de vendas -->
           <span class="value">{{ totalSales | number }}</span>
           <span class="unit">Unid</span>
         </div>
@@ -34,7 +30,6 @@
       <div class="card">
         <div class="card-title">Conectados</div>
         <div class="card-content">
-          <!-- AQUI: Exibe o número de veículos conectados -->
           <span class="value">{{ connectedVehicles | number }}</span>
           <span class="unit">Unid</span>
         </div>
@@ -43,7 +38,6 @@
       <div class="card">
         <div class="card-title">Update Software</div>
         <div class="card-content">
-          <!-- AQUI: Exibe o número de updates de software -->
           <span class="value">{{ softwareUpdates | number }}</span>
           <span class="unit">Unid</span>
         </div>
@@ -53,7 +47,12 @@
     <!-- Imagem do veículo -->
     <div class="car-image-container">
       <!-- AQUI: Exibe a imagem do veículo selecionado -->
-      <img *ngIf="selectedVehicle" [src]="selectedVehicle.img" alt="Ford {{ selectedVehicle.vehicle }}" class="imagem do carro" />
+      <img
+        *ngIf="selectedVehicle"
+        [src]="selectedVehicle.img"
+        alt="Ford {{ selectedVehicle.vehicle }}"
+        class="imagem do carro"
+      />
     </div>
 
     <!-- Tabela de dados -->
@@ -70,20 +69,43 @@
           </tr>
         </thead>
         <tbody>
-          <!-- AQUI: Exibe os detalhes do veículo na tabela, SOMENTE SE tivermos os dados -->
+          <tr>
+            <td>
+              <form [formGroup]="selectCarForms">
+                <input
+                  type="text"
+                  formControlName="vin"
+                  placeholder="Digite o VIN e Enter"
+                  (keydown.enter)="loadVehicleDetails()"
+                  class="vin-input"
+                />
+              </form>
+            </td>
+
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+
           <tr *ngIf="vehicleData">
-            <!-- Para o VIN, estamos usando o ID do veículo por enquanto, já que o VIN real não vem na lista. -->
-            <td><input type="text"></td>
+            <td>{{ selectCarForms.controls.vin.value }}</td>
             <td>{{ vehicleData.odometro | number }} Km</td>
             <td>{{ vehicleData.nivelCombustivel }}%</td>
-            <td>{{ vehicleData.status === 'on' ? 'Ligado' : 'Desligado' }}</td>
+            <td>{{ vehicleData.status === "on" ? "Ligado" : "Desligado" }}</td>
             <td>{{ vehicleData.lat }}</td>
             <td>{{ vehicleData.long }}</td>
           </tr>
-          
-          <tr *ngIf="!vehicleData">
-            <td colspan="6" style="text-align: center; padding: 20px;">
-              Selecione um veículo para ver os detalhes ou os dados não foram encontrados.
+
+          <tr *ngIf="!vehicleData && !selectCarForms.controls.vin.value">
+            <td colspan="6" style="text-align: center; padding: 20px">
+              Selecione um veículo para ver os detalhes ou digite um VIN.
+            </td>
+          </tr>
+          <tr *ngIf="!vehicleData && selectCarForms.controls.vin.value">
+            <td colspan="6" style="text-align: center; padding: 20px">
+              Dados não encontrados para o VIN digitado.
             </td>
           </tr>
         </tbody>

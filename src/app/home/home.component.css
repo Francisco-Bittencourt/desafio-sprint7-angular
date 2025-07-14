@@ -150,7 +150,7 @@
   font-weight: bold;
 }
 
-/* Responsividade opcional para imagem */
+
 @media (max-width: 768px) {
   .background-image {
     max-width: 70%;
