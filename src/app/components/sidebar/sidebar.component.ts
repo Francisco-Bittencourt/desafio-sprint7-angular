@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
   styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent {
+toTesteDrive() {
+throw new Error('Method not implemented.');
+}
   constructor(private router: Router) {}
 
   logout() {
