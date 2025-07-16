@@ -1,0 +1,296 @@
+/* src/app/test-drive/test-drive.component.css */
+
+/* Estilos gerais para o layout da página de Test-Drive */
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+/* Estilo para flex-row em telas grandes, usando media query */
+@media (min-width: 1024px) { /* lg breakpoint */
+  .lg\:flex-row {
+    flex-direction: row;
+  }
+}
+
+.bg-gray-100 {
+  background-color: #f3f4f6; /* Cor de fundo suave */
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif; /* Fonte padrão, se não carregada globalmente */
+}
+
+/* Estilos para a área de conteúdo principal */
+.flex-1 {
+  flex: 1;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+/* Estilo para padding em telas grandes, usando media query */
+@media (min-width: 1024px) { /* lg breakpoint */
+  .lg\:p-10 {
+    padding: 2.5rem; /* 40px */
+  }
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+/* Título da página */
+.text-3xl {
+  font-size: 1.875rem; /* 30px */
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-blue-800 {
+  color: #1e40af; /* Um tom de azul mais escuro */
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+/* Estilos para o container do formulário */
+.max-w-3xl {
+  max-width: 48rem; /* 768px */
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+/* Estilo para padding em telas pequenas, usando media query */
+@media (min-width: 640px) { /* sm breakpoint */
+  .sm\:p-8 {
+    padding: 2rem; /* 32px */
+  }
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos para o formulário em si */
+.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 1.5rem;
+}
+
+/* Títulos de seção dentro do formulário */
+.text-xl {
+  font-size: 1.25rem; /* 20px */
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.text-gray-700 {
+  color: #374151;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+/* Grid para campos do formulário */
+.grid {
+  display: grid;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+/* Estilo para grid de 2 colunas em telas médias, usando media query */
+@media (min-width: 768px) { /* md breakpoint */
+  .grid { /* Aplica ao container com a classe .grid */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+/* Labels dos campos */
+.block {
+  display: block;
+}
+
+.text-sm {
+  font-size: 0.875rem; /* 14px */
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+/* Estilos para inputs e selects */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem; /* py-2 px-3 */
+  margin-top: 0.25rem; /* mt-1 */
+  border: 1px solid #d1d5db; /* border-gray-300 */
+  border-radius: 0.375rem; /* rounded-md */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+  font-size: 0.875rem; /* sm:text-sm */
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #3b82f6; /* focus:border-blue-500 */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* focus:ring-blue-500 focus:ring-offset-2 */
+}
+
+/* Mensagens de erro */
+.text-red-500 {
+  color: #ef4444;
+}
+
+.text-xs {
+  font-size: 0.75rem; /* 12px */
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+/* Estilos para checkboxes */
+.items-start {
+  align-items: flex-start;
+}
+
+.h-4 {
+  height: 1rem;
+}
+
+.w-4 {
+  width: 1rem;
+}
+
+.text-blue-600 {
+  color: #2563eb;
+}
+
+.border-gray-300 {
+  border-color: #d1d5db;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
+.focus\:ring-blue-500:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+/* Links dentro das labels (Termos de Uso, Política de Privacidade) */
+.hover\:underline:hover {
+  text-decoration: underline;
+}
+
+/* Botão de envio */
+.justify-center {
+  justify-content: center;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 0.75rem 1.5rem; /* py-3 px-6 */
+  background-color: #1d4ed8; /* bg-blue-700 */
+  color: #ffffff;
+  font-weight: 600; /* font-semibold */
+  border-radius: 0.375rem; /* rounded-md */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06); /* shadow-md */
+  transition: background-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  cursor: pointer;
+  border: none; /* Remover borda padrão do botão */
+}
+
+button[type="submit"]:hover {
+  background-color: #1e40af; /* hover:bg-blue-800 */
+}
+
+button[type="submit"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5), 0 0 0 6px rgba(59, 130, 246, 0.25); /* focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 */
+}
+
+button[type="submit"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Mensagens de sucesso/erro após submissão */
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.bg-green-100 {
+  background-color: #d1fae5;
+}
+
+.text-green-700 {
+  color: #047857;
+}
+
+.bg-red-100 {
+  background-color: #fee2e2;
+}
+
+.text-red-700 {
+  color: #b91c1c;
+}
+
+/* Media Queries para responsividade */
+@media (min-width: 768px) { /* md breakpoint */
+  button[type="submit"] {
+    width: auto; /* md:w-auto */
+  }
+}

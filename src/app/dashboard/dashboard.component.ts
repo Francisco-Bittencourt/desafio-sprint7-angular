@@ -10,8 +10,8 @@ import { Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-dashboard',
   standalone: false,
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css',
+  templateUrl: './dashboard.component.html', // Corrigido para o HTML correto do Dashboard
+  styleUrl: './dashboard.component.css',   // Corrigido para o CSS correto do Dashboard
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   vehicles: Veiculo[] = [];
