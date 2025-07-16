@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TestDriveComponent } from './test-drive.component';
 import { TestDriveRoutingModule } from './test-drive-routing.module';
-import { SidebarModule } from '../components/sidebar/sidebar.module';
-import { RouterModule } from '@angular/router'; // Importante: Importar RouterModule
+// import { SidebarModule } from '../components/sidebar/sidebar.module'; // REMOVIDO: SidebarModule não é mais necessário
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [TestDriveComponent],
@@ -13,8 +13,8 @@ import { RouterModule } from '@angular/router'; // Importante: Importar RouterMo
     CommonModule,
     ReactiveFormsModule,
     TestDriveRoutingModule,
-    SidebarModule,
-    RouterModule // Importante: Incluir RouterModule nos imports para que routerLink funcione
+    // SidebarModule, // REMOVIDO
+    RouterModule 
   ],
   exports: [TestDriveComponent],
 })

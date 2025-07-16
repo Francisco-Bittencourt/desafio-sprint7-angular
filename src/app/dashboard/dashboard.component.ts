@@ -6,12 +6,13 @@ import { Veiculo, VeiculosAPI } from '../models/veiculo.model';
 import { VehicleData } from '../models/vehicleData.model';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
+import { Router } from '@angular/router'; // Garanta que o Router está importado
 
 @Component({
   selector: 'app-dashboard',
   standalone: false,
-  templateUrl: './dashboard.component.html', // Corrigido para o HTML correto do Dashboard
-  styleUrl: './dashboard.component.css',   // Corrigido para o CSS correto do Dashboard
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   vehicles: Veiculo[] = [];
@@ -29,7 +30,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
-  constructor(private dashboardservice: DashboardService) {}
+  constructor(private dashboardservice: DashboardService, private router: Router) {} // Injetar o Router
 
   ngOnInit(): void {
     this.loadVehicles();
@@ -47,12 +48,25 @@ export class DashboardComponent implements OnInit, OnDestroy {
             this.totalSales = 0;
             this.connectedVehicles = 0;
             this.softwareUpdates = 0;
+            this.clearVehicleData();
           }
         } else {
           this.selectedVehicle = null;
           this.totalSales = 0;
           this.connectedVehicles = 0;
           this.softwareUpdates = 0;
+          this.clearVehicleData();
+        }
+      });
+
+    this.selectCarForms.controls.vin.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((vin: string | null) => {
+        if (vin && this.selectCarForms.controls.carId.value) {
+          this.selectCarForms.controls.carId.setValue('', { emitEvent: false });
+          this.clearVehicleData();
+        } else if (!vin && !this.selectCarForms.controls.carId.value) {
+          this.clearVehicleData();
         }
       });
   }
@@ -67,7 +81,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .getVehicles()
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (res) => {
+        next: (res: VeiculosAPI) => {
           console.log('Resposta da API de veículos:', res);
           this.vehicles = res.vehicles;
         },
@@ -82,6 +96,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     if (vin) {
       console.log('Buscando dados para o VIN:', vin);
+      this.clearVehicleData(); 
+      
       this.dashboardservice
         .getVehicleData(vin)
         .pipe(takeUntil(this.destroy$))
@@ -97,7 +113,36 @@ export class DashboardComponent implements OnInit, OnDestroy {
         });
     } else {
       console.warn('VIN não disponível para carregar dados do veículo.');
-      this.vehicleData = null;
+      this.clearVehicleData();
+    }
+  }
+
+  // Método para navegação para a Home (já estava aqui)
+  toHome(): void {
+    this.router.navigate(['/home']);
+    // Fechar o offcanvas após navegação
+    const offcanvasElement = document.getElementById('offcanvasNavbar');
+    if (offcanvasElement) {
+      const bsOffcanvas = (window as any).bootstrap.Offcanvas.getInstance(offcanvasElement);
+      if (bsOffcanvas) {
+        bsOffcanvas.hide();
+      }
+    }
+  }
+
+  // Novo método para Logout
+  toLogout(): void {
+    console.log('Logout clicado! Implemente sua lógica de logout aqui.');
+    // Exemplo: Limpar token de autenticação, etc.
+    // Navegar para a página de login
+    this.router.navigate(['/login']); 
+    // Fechar o offcanvas
+    const offcanvasElement = document.getElementById('offcanvasNavbar');
+    if (offcanvasElement) {
+      const bsOffcanvas = (window as any).bootstrap.Offcanvas.getInstance(offcanvasElement);
+      if (bsOffcanvas) {
+        bsOffcanvas.hide();
+      }
     }
   }
 

@@ -1,49 +1,63 @@
-<div class="papai">
-  <div class="img-ford">
-    <img src="/img/ranger.png" alt="Imagem da Ford Ranger" />
+<div class="d-flex flex-column flex-lg-row min-vh-100 bg-white">
+  <div class="d-none d-lg-flex col-lg-8 justify-content-center align-items-center p-3 p-xl-5 bg-white">
+    <img src="/img/ranger.png" alt="Imagem da Ford Ranger" class="img-fluid" style="max-width: 600px;" />
   </div>
-  <div class="container-form">
-    <div class="form">
-      <div class="form-img">
-        <img src="/img/ford.png" alt="Logo da Ford" class="logo" />
+
+  <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center bg-white p-4 p-md-5 shadow-lg">
+    <div class="w-100" style="max-width: 350px;">
+      <div class="text-center mb-4">
+        <img src="/img/ford.png" alt="Logo da Ford" class="img-fluid mb-3" style="width: 100px;" />
+        <h2 class="text-primary fw-bold">Boas-vindas</h2>
       </div>
-      <div class="forms">
-        <h2>Boas-vindas</h2>
-        <form (ngSubmit)="fazerLogin()">
+
+      <form (ngSubmit)="fazerLogin()" class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label for="nome" class="form-label visually-hidden">Insira seu nome</label>
           <input
             type="text"
-            name="nome"
             id="nome"
+            name="nome"
+            class="form-control form-control-lg"
             placeholder="Insira seu nome"
             [(ngModel)]="nome"
+            required
           />
+        </div>
+
+        <div class="mb-3">
+          <label for="senha" class="form-label visually-hidden">Insira sua senha</label>
           <input
             type="password"
+            id="senha"
             name="senha"
+            class="form-control form-control-lg"
             placeholder="Insira sua senha"
             [(ngModel)]="senha"
+            required
           />
+        </div>
 
-          <div class="checkbox">
-            <input
-              type="checkbox"
-              id="autoLogin"
-              name="lembrar"
-              [(ngModel)]="lembrar"
-            />
-            <label for="autoLogin">Logar automaticamente</label>
-          </div>
+        <div class="form-check mb-4">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="autoLogin"
+            name="lembrar"
+            [(ngModel)]="lembrar"
+          />
+          <label class="form-check-label text-muted" for="autoLogin">Logar automaticamente</label>
+        </div>
 
-          <button type="submit">Entrar</button>
-        </form>
-        <!-- Mensagem de erro para substituir o alert() -->
-        <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
-      </div>
-      <div class="copy">
-        <p>&copy; 2025</p>
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-primary btn-lg shadow-sm">Entrar</button>
+        </div>
+      </form>
+
+      <p *ngIf="errorMessage" class="text-danger text-center mt-3">{{ errorMessage }}</p>
+
+      <div class="text-center mt-4 text-muted small">
+        <p>&copy; {{ currentYear }}</p>
       </div>
     </div>
   </div>
-
-  <div class="terceira"></div>
 </div>

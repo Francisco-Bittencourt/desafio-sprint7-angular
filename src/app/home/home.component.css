@@ -1,162 +1,56 @@
-/* Estrutura base */
-.home-container {
-  display: flex;
-  height: 100vh;
-  width: 100%;
-  font-family: Arial, sans-serif;
-  position: relative;
-}
+/* home.component.css */
 
-/* Menu lateral */
+/* Keep existing sidebar width */
 .sidebar {
-  width: 200px;
-  background-color: #f4f4f4;
-  padding: 1rem;
+  min-width: 200px; /* Largura mínima da sidebar em telas grandes */
+  width: 250px; /* Largura padrão da sidebar em telas grandes */
+}
+
+/* Estilos Customizados para o Botão Hamburger (Floating Action Button - FAB style) */
+.fab-menu-button {
+  position: fixed;
+  top: 1.5rem;
+  left: 5px;
+  z-index: 1050;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  z-index: 2;
-  position: relative;
-}
-
-.sidebar .logo {
-  width: 80%;
-  margin-bottom: 2rem;
-}
-
-.sidebar-links {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 
-/* Esconde o checkbox */
-#menu-toggle {
-  display: none;
+.fab-menu-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
-/* Ícone do menu hamburger */
-.menu-icon {
-  display: block;
-  width: 30px;
-  height: 3px;
-  background-color: #333;
-  position: relative;
-  cursor: pointer;
-  margin-bottom: 1rem;
+.fab-menu-button .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  width: 1.5em;
+  height: 1.5em;
 }
 
-.menu-icon::before,
-.menu-icon::after {
-  content: "";
-  position: absolute;
-  width: 30px;
-  height: 3px;
-  background-color: #333;
-  transition: 0.3s ease;
+/* Estilos Customizados para o Offcanvas (o painel do menu) */
+.offcanvas {
+  background-color: #f8f9fa; /* Fundo claro para o offcanvas */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
 }
 
-.menu-icon::before {
-  top: -8px;
+.offcanvas .offcanvas-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Borda sutil */
 }
 
-.menu-icon::after {
-  top: 8px;
-}
-
-/* Menu (escondido por padrão) */
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  width: 100%;
-  display: none; /* Esconde SEMPRE */
-  flex-direction: column;
-  align-items: center;
-}
-
-.sidebar li {
-  margin: 1rem 0;
-  width: 100%;
-  text-align: center;
-}
-
-.sidebar a {
-  text-decoration: none;
-  color: #003366;
-  font-weight: bold;
-}
-
-/* Exibe o menu quando checkbox estiver marcado */
-#menu-toggle:checked + .menu-icon + ul {
-  display: flex;
-}
-
-/* Conteúdo */
-.content {
-  flex: 1;
-  position: relative;
-  background-color: #fff;
-  overflow: hidden;
-}
-
-.background-image {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+/* Estilos para o conteúdo principal */
+.content .img-fluid {
   max-width: 90%;
-  height: auto;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.content.menu-ativo::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
 }
 
 .card {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.85);
-  padding: 2rem;
-  border-radius: 8px;
-  width: 300px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  z-index: 2;
-}
-
-.card h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.card p {
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.logout {
-  text-decoration: none;
-  color: rgb(0, 34, 255);
-  font-weight: bold;
-}
-
-
-@media (max-width: 768px) {
-  .background-image {
-    max-width: 70%;
-  }
-
-  .card {
-    width: 90%;
-  }
+  min-width: 280px;
 }
