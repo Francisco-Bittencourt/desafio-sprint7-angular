@@ -10,11 +10,11 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname)));
 
+// --- ADICIONE ESTA ROTA AQUI! ---
 app.get("/", (req, res) => {
-  res.send(
-    "Sua API está no ar! Use as rotas /login, /vehicles ou /vehicleData."
-  );
+  res.send("Sua API está no ar! Use as rotas /login, /vehicles ou /vehicleData.");
 });
+// ---------------------------------
 
 app.post("/login", async (req, res) => {
   try {
@@ -28,8 +28,7 @@ app.post("/login", async (req, res) => {
 
     if (nome !== "admin" || senha !== "123456") {
       return res.status(401).json({
-        message:
-          "O nome de usuário ou senha está incorreto ou não foi cadastrado!",
+        message: "O nome de usuário ou senha está incorreto ou não foi cadastrado!",
       });
     }
 

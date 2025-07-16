@@ -8,7 +8,11 @@ import { Router } from '@angular/router';
   styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent {
+<<<<<<< HEAD
 testDrive() {
+=======
+toTesteDrive() {
+>>>>>>> e19b0a47b09dfe6749df1fe08dfb67b195a71c53
 throw new Error('Method not implemented.');
 }
   constructor(private router: Router) {}
