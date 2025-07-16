@@ -8,15 +8,21 @@ import { Router } from '@angular/router';
   styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent {
-testDrive() {
-throw new Error('Method not implemented.');
-}
   constructor(private router: Router) {}
+
+  // Método testDrive agora navega para a nova rota
+  testDrive() {
+    this.router.navigate(['/test-drive']);
+    console.log('Navegando para a página de Test-Drive...');
+  }
 
   logout() {
     this.router.navigate(['login']);
+    console.log('Realizando logout...');
   }
+
   toHome() {
     this.router.navigate(['/home']);
+    console.log('Navegando para a página Home...');
   }
 }

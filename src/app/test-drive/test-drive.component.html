@@ -1,1 +1,140 @@
-<p>test-drive works!</p>
+<!-- src/app/test-drive/test-drive.component.html -->
+<div class="min-h-screen flex flex-col lg:flex-row bg-gray-100 font-inter">
+  <!-- Sidebar Component -->
+  <app-sidebar></app-sidebar>
+
+  <!-- Main Content Area -->
+  <div class="flex-1 p-6 lg:p-10 overflow-y-auto">
+    <h1 class="text-3xl font-bold text-center text-blue-800 mb-8">Agende seu Test-Drive</h1>
+
+    <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-lg shadow-lg">
+      <form [formGroup]="testDriveForm" (ngSubmit)="onSubmit()" class="space-y-6">
+        <!-- Personal Information -->
+        <div>
+          <h2 class="text-xl font-semibold text-gray-700 mb-4">Seus Dados</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
+              <input
+                type="text"
+                id="name"
+                formControlName="name"
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                placeholder="Seu nome"
+              />
+              <div *ngIf="testDriveForm.get('name')?.invalid && (testDriveForm.get('name')?.dirty || testDriveForm.get('name')?.touched)" class="text-red-500 text-xs mt-1">
+                Nome é obrigatório.
+              </div>
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+              <input
+                type="email"
+                id="email"
+                formControlName="email"
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                placeholder="seu.email@example.com"
+              />
+              <div *ngIf="testDriveForm.get('email')?.invalid && (testDriveForm.get('email')?.dirty || testDriveForm.get('email')?.touched)" class="text-red-500 text-xs mt-1">
+                <span *ngIf="testDriveForm.get('email')?.errors?.['required']">Email é obrigatório.</span>
+                <span *ngIf="testDriveForm.get('email')?.errors?.['email']">Email inválido.</span>
+              </div>
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Telefone</label>
+              <input
+                type="tel"
+                id="phone"
+                formControlName="phone"
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                placeholder="(XX) XXXXX-XXXX"
+              />
+              <div *ngIf="testDriveForm.get('phone')?.invalid && (testDriveForm.get('phone')?.dirty || testDriveForm.get('phone')?.touched)" class="text-red-500 text-xs mt-1">
+                Telefone é obrigatório.
+              </div>
+            </div>
+            <div>
+              <label for="vehicle" class="block text-sm font-medium text-gray-700 mb-1">Veículo de Interesse</label>
+              <select
+                id="vehicle"
+                formControlName="vehicle"
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+              >
+                <option value="">Selecione um veículo</option>
+                <option *ngFor="let vehicle of vehicles" [value]="vehicle.vehicle">{{ vehicle.vehicle }}</option>
+              </select>
+              <div *ngIf="testDriveForm.get('vehicle')?.invalid && (testDriveForm.get('vehicle')?.dirty || testDriveForm.get('vehicle')?.touched)" class="text-red-500 text-xs mt-1">
+                Selecione um veículo.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LGPD Section -->
+        <div>
+          <h2 class="text-xl font-semibold text-gray-700 mb-4">Termos de Privacidade (LGPD)</h2>
+          <div class="space-y-3">
+            <div class="flex items-start">
+              <input
+                id="termsAccepted"
+                type="checkbox"
+                formControlName="termsAccepted"
+                class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+              />
+              <label for="termsAccepted" class="ml-2 block text-sm text-gray-900">
+                Li e concordo com os <a routerLink="/terms-and-conditions" class="text-blue-600 hover:underline">Termos de Uso</a>.
+              </label>
+            </div>
+            <div *ngIf="testDriveForm.get('termsAccepted')?.invalid && (testDriveForm.get('termsAccepted')?.dirty || testDriveForm.get('termsAccepted')?.touched)" class="text-red-500 text-xs mt-1">
+              Você deve aceitar os Termos de Uso.
+            </div>
+
+            <div class="flex items-start">
+              <input
+                id="privacyPolicyAccepted"
+                type="checkbox"
+                formControlName="privacyPolicyAccepted"
+                class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+              />
+              <label for="privacyPolicyAccepted" class="ml-2 block text-sm text-gray-900">
+                Li e concordo com a <a routerLink="/privacy-policy" class="text-blue-600 hover:underline">Política de Privacidade</a>.
+              </label>
+            </div>
+            <div *ngIf="testDriveForm.get('privacyPolicyAccepted')?.invalid && (testDriveForm.get('privacyPolicyAccepted')?.dirty || testDriveForm.get('privacyPolicyAccepted')?.touched)" class="text-red-500 text-xs mt-1">
+              Você deve aceitar a Política de Privacidade.
+            </div>
+
+            <div class="flex items-start">
+              <input
+                id="marketingConsent"
+                type="checkbox"
+                formControlName="marketingConsent"
+                class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+              />
+              <label for="marketingConsent" class="ml-2 block text-sm text-gray-900">
+                Concordo em receber comunicações de marketing da Ford. (Opcional)
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="flex justify-center">
+          <button
+            type="submit"
+            [disabled]="testDriveForm.invalid"
+            class="w-full md:w-auto px-6 py-3 bg-blue-700 text-white font-semibold rounded-md shadow-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Agendar Test-Drive
+          </button>
+        </div>
+      </form>
+      <div *ngIf="formSubmitted && testDriveForm.valid" class="mt-6 p-4 bg-green-100 text-green-700 rounded-md text-center" style="position: relative; z-index: 1000; border: 2px solid green; font-size: 1.5em; font-weight: bold;">
+        Olá, {{ bookedName }}! Seu Test-Drive foi agendado com sucesso! Entraremos em contato em breve.
+      </div>
+      <div *ngIf="formSubmitted && testDriveForm.invalid" class="mt-6 p-4 bg-red-100 text-red-700 rounded-md text-center" style="position: relative; z-index: 1000; border: 2px solid red; font-size: 1.5em; font-weight: bold;">
+        Por favor, preencha todos os campos obrigatórios e aceite os termos.
+      </div>
+    </div>
+  </div>
+</div>
