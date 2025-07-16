@@ -1,6 +1,4 @@
-/* src/app/test-drive/test-drive.component.css */
 
-/* Estilos gerais para o layout da página de Test-Drive */
 .min-h-screen {
   min-height: 100vh;
 }
@@ -13,22 +11,21 @@
   flex-direction: column;
 }
 
-/* Estilo para flex-row em telas grandes, usando media query */
-@media (min-width: 1024px) { /* lg breakpoint */
+@media (min-width: 1024px) {
   .lg\:flex-row {
     flex-direction: row;
   }
 }
 
 .bg-gray-100 {
-  background-color: #f3f4f6; /* Cor de fundo suave */
+  background-color: #f3f4f6;
 }
 
 .font-inter {
-  font-family: 'Inter', sans-serif; /* Fonte padrão, se não carregada globalmente */
+  font-family: 'Inter', sans-serif;
 }
 
-/* Estilos para a área de conteúdo principal */
+
 .flex-1 {
   flex: 1;
 }
@@ -37,10 +34,10 @@
   padding: 1.5rem;
 }
 
-/* Estilo para padding em telas grandes, usando media query */
-@media (min-width: 1024px) { /* lg breakpoint */
+
+@media (min-width: 1024px) {
   .lg\:p-10 {
-    padding: 2.5rem; /* 40px */
+    padding: 2.5rem; 
   }
 }
 
@@ -50,7 +47,7 @@
 
 /* Título da página */
 .text-3xl {
-  font-size: 1.875rem; /* 30px */
+  font-size: 1.875rem; 
 }
 
 .font-bold {
@@ -62,16 +59,16 @@
 }
 
 .text-blue-800 {
-  color: #1e40af; /* Um tom de azul mais escuro */
+  color: #1e40af;
 }
 
 .mb-8 {
   margin-bottom: 2rem;
 }
 
-/* Estilos para o container do formulário */
+
 .max-w-3xl {
-  max-width: 48rem; /* 768px */
+  max-width: 48rem;
 }
 
 .mx-auto {
@@ -83,10 +80,9 @@
   background-color: #ffffff;
 }
 
-/* Estilo para padding em telas pequenas, usando media query */
-@media (min-width: 640px) { /* sm breakpoint */
+@media (min-width: 640px) { 
   .sm\:p-8 {
-    padding: 2rem; /* 32px */
+    padding: 2rem;
   }
 }
 
@@ -98,14 +94,13 @@
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* Estilos para o formulário em si */
+
 .space-y-6 > :not([hidden]) ~ :not([hidden]) {
   margin-top: 1.5rem;
 }
 
-/* Títulos de seção dentro do formulário */
 .text-xl {
-  font-size: 1.25rem; /* 20px */
+  font-size: 1.25rem;
 }
 
 .font-semibold {
@@ -120,7 +115,7 @@
   margin-bottom: 1rem;
 }
 
-/* Grid para campos do formulário */
+
 .grid {
   display: grid;
 }
@@ -129,9 +124,9 @@
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
-/* Estilo para grid de 2 colunas em telas médias, usando media query */
-@media (min-width: 768px) { /* md breakpoint */
-  .grid { /* Aplica ao container com a classe .grid */
+
+@media (min-width: 768px) { 
+  .grid { 
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -146,7 +141,7 @@
 }
 
 .text-sm {
-  font-size: 0.875rem; /* 14px */
+  font-size: 0.875rem; 
 }
 
 .font-medium {
@@ -157,27 +152,27 @@
   margin-bottom: 0.25rem;
 }
 
-/* Estilos para inputs e selects */
+
 input[type="text"],
 input[type="email"],
 input[type="tel"],
 select {
   display: block;
   width: 100%;
-  padding: 0.5rem 0.75rem; /* py-2 px-3 */
-  margin-top: 0.25rem; /* mt-1 */
-  border: 1px solid #d1d5db; /* border-gray-300 */
-  border-radius: 0.375rem; /* rounded-md */
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
-  font-size: 0.875rem; /* sm:text-sm */
+  padding: 0.5rem 0.75rem;
+  margin-top: 0.25rem; 
+  border: 1px solid #d1d5db; 
+  border-radius: 0.375rem; 
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
+  font-size: 0.875rem; 
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 input:focus,
 select:focus {
   outline: none;
-  border-color: #3b82f6; /* focus:border-blue-500 */
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* focus:ring-blue-500 focus:ring-offset-2 */
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
 }
 
 /* Mensagens de erro */
@@ -186,7 +181,7 @@ select:focus {
 }
 
 .text-xs {
-  font-size: 0.75rem; /* 12px */
+  font-size: 0.75rem; 
 }
 
 .mt-1 {
@@ -204,6 +199,7 @@ select:focus {
 
 .w-4 {
   width: 1rem;
+  margin-bottom: 3px;
 }
 
 .text-blue-600 {
@@ -226,31 +222,29 @@ select:focus {
   margin-left: 0.5rem;
 }
 
-/* Links dentro das labels (Termos de Uso, Política de Privacidade) */
 .hover\:underline:hover {
   text-decoration: underline;
 }
 
-/* Botão de envio */
 .justify-center {
   justify-content: center;
 }
 
 button[type="submit"] {
   width: 100%;
-  padding: 0.75rem 1.5rem; /* py-3 px-6 */
-  background-color: #1d4ed8; /* bg-blue-700 */
+  padding: 0.75rem 1.5rem; 
+  background-color: #1d4ed8; 
   color: #ffffff;
-  font-weight: 600; /* font-semibold */
-  border-radius: 0.375rem; /* rounded-md */
+  font-weight: 600; 
+  border-radius: 0.375rem; 
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06); /* shadow-md */
   transition: background-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
   cursor: pointer;
-  border: none; /* Remover borda padrão do botão */
+  border: none; 
 }
 
 button[type="submit"]:hover {
-  background-color: #1e40af; /* hover:bg-blue-800 */
+  background-color: #1e40af; 
 }
 
 button[type="submit"]:focus {
@@ -263,7 +257,7 @@ button[type="submit"]:disabled {
   cursor: not-allowed;
 }
 
-/* Mensagens de sucesso/erro após submissão */
+
 .mt-6 {
   margin-top: 1.5rem;
 }
@@ -289,8 +283,8 @@ button[type="submit"]:disabled {
 }
 
 /* Media Queries para responsividade */
-@media (min-width: 768px) { /* md breakpoint */
+@media (min-width: 768px) { 
   button[type="submit"] {
-    width: auto; /* md:w-auto */
+    width: auto; 
   }
 }

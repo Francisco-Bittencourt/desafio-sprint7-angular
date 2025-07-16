@@ -1,15 +1,15 @@
-<!-- src/app/test-drive/test-drive.component.html -->
+
 <div class="min-h-screen flex flex-col lg:flex-row bg-gray-100 font-inter">
   <!-- Sidebar Component -->
   <app-sidebar></app-sidebar>
 
-  <!-- Main Content Area -->
+  
   <div class="flex-1 p-6 lg:p-10 overflow-y-auto">
     <h1 class="text-3xl font-bold text-center text-blue-800 mb-8">Agende seu Test-Drive</h1>
 
     <div class="max-w-3xl mx-auto bg-white p-6 sm:p-8 rounded-lg shadow-lg">
       <form [formGroup]="testDriveForm" (ngSubmit)="onSubmit()" class="space-y-6">
-        <!-- Personal Information -->
+        
         <div>
           <h2 class="text-xl font-semibold text-gray-700 mb-4">Seus Dados</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -82,7 +82,7 @@
                 class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
               />
               <label for="termsAccepted" class="ml-2 block text-sm text-gray-900">
-                Li e concordo com os <a routerLink="/terms-and-conditions" class="text-blue-600 hover:underline">Termos de Uso</a>.
+                Li e concordo com os <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709compilado.htm" target="_blank" class="text-blue-600 hover:underline">Termos de Uso</a>.
               </label>
             </div>
             <div *ngIf="testDriveForm.get('termsAccepted')?.invalid && (testDriveForm.get('termsAccepted')?.dirty || testDriveForm.get('termsAccepted')?.touched)" class="text-red-500 text-xs mt-1">
@@ -97,7 +97,7 @@
                 class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
               />
               <label for="privacyPolicyAccepted" class="ml-2 block text-sm text-gray-900">
-                Li e concordo com a <a routerLink="/privacy-policy" class="text-blue-600 hover:underline">Política de Privacidade</a>.
+                Li e concordo com a <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709compilado.htm" target="_blank" class="text-blue-600 hover:underline">Política de Privacidade</a>.
               </label>
             </div>
             <div *ngIf="testDriveForm.get('privacyPolicyAccepted')?.invalid && (testDriveForm.get('privacyPolicyAccepted')?.dirty || testDriveForm.get('privacyPolicyAccepted')?.touched)" class="text-red-500 text-xs mt-1">

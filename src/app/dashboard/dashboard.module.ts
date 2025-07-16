@@ -4,7 +4,7 @@ import { DashboardComponent } from './dashboard.component';
 import { SidebarModule } from '../components/sidebar/sidebar.module';
 import { RouterLink, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DashboardRoutingModule } from './dashboard-routing.module'; // Importante: Importar o módulo de rotas do Dashboard
+import { DashboardRoutingModule } from './dashboard-routing.module';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -13,7 +13,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module'; // Importan
     SidebarModule,
     RouterLink,
     ReactiveFormsModule,
-    DashboardRoutingModule // Importante: Adicionar aqui para que o lazy loading funcione corretamente
+    DashboardRoutingModule,
   ],
   exports: [DashboardComponent],
 })

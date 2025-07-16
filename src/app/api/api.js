@@ -5,16 +5,16 @@ const cors = require("cors");
 const app = express();
 
 app.use(cors());
-// app.use(express.urlencoded({ extended: true }));
+
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname)));
 
-// --- ADICIONE ESTA ROTA AQUI! ---
+
 app.get("/", (req, res) => {
   res.send("Sua API está no ar! Use as rotas /login, /vehicles ou /vehicleData.");
 });
-// ---------------------------------
+
 
 app.post("/login", async (req, res) => {
   try {
