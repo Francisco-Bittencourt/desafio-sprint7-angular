@@ -9,6 +9,12 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent },
+  // Nova rota para Test-Drive com lazy loading
+  {
+    path: 'test-drive',
+    loadChildren: () =>
+      import('./test-drive/test-drive.module').then((m) => m.TestDriveModule),
+  },
 ];
 
 @NgModule({

@@ -8,9 +8,11 @@ import { Router } from '@angular/router';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  menuVisivel: any;
+  menuVisivel: any; // Considerar tipar melhor, talvez como boolean
   constructor(private router: Router) {}
+
   toHome() {
-    this.router.navigate(['/homw']);
+    // Correção: a rota para 'home' deve ser '/home'
+    this.router.navigate(['/home']);
   }
 }
