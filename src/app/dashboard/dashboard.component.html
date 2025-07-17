@@ -18,8 +18,8 @@
   </nav>
 
   <button class="fab-menu-button" type="button" 
-          data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" 
-          aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" 
+            aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -155,7 +155,7 @@
         <tbody>
           <tr *ngIf="!vehicleData && !selectCarForms.controls.vin.value">
             <td colspan="6" class="text-center p-4 text-muted">
-              Selecione um veículo para ver os detalhes ou digite um VIN.
+              Seleccione um veículo para ver os detalhes ou digite um VIN.
             </td>
           </tr>
           <tr *ngIf="!vehicleData && selectCarForms.controls.vin.value">
@@ -174,5 +174,9 @@
         </tbody>
       </table>
     </div>
-  </div>
+
+    <div class="text-center mt-4">
+      <a routerLink="/test-drive" class="btn btn-primary btn-lg">Agende seu Test Drive</a>
+    </div>
+    </div>
 </div>
