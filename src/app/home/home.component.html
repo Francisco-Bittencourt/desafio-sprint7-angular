@@ -1,51 +1,35 @@
-<div class="d-flex min-vh-100">
-  <nav class="sidebar bg-light p-3 shadow-sm d-none flex-column align-items-center">
-    <img src="/img/ford.png" class="img-fluid mb-4" alt="Logo Ford" style="max-width: 80%;" />
-    <ul class="navbar-nav flex-column w-100 mt-3">
-      <li class="nav-item mb-2 text-center">
-        <a (click)="toHome()" class="nav-link" aria-current="page">Home</a>
-      </li>
-      <li class="nav-item mb-2 text-center">
-        <a routerLink="/dashboard" class="nav-link">Dashboard</a>
-      </li>
-    </ul>
+<div class="d-flex flex-column min-vh-100 bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container-fluid">
+      <div class="navbar-brand">
+        <img src="/img/ford.png" alt="Logo da Ford" style="height: 30px;" class="me-2">
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <button class="btn btn-danger ms-2" (click)="logout()">Sair</button>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
 
-  <button class="fab-menu-button" type="button" 
-          data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" 
-          aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-    <div class="offcanvas-header bg-light d-flex flex-column align-items-center">
-      <img src="/img/ford.png" class="img-fluid mb-3" alt="Logo Ford" style="max-width: 70%;" />
-      <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-      <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  <main class="flex-grow-1 d-flex flex-column justify-content-center align-items-center p-4">
+    <div class="text-center">
+      <h1 class="display-4 text-primary mb-3">Bem-vindo(a), {{ userName }}!</h1>
+      <p class="lead text-muted">Esta é a sua página inicial da Ford.</p>
+      <p>Aqui você poderá ver um resumo das suas atividades e acessar as principais funcionalidades.</p>
+      <div class="mt-4">
+        <button class="btn btn-primary btn-lg me-2" routerLink="/dashboard">Ir para o Dashboard</button>
+        <button class="btn btn-secondary btn-lg" routerLink="/test-drive">Agendar Test Drive</button>
+      </div>
     </div>
-    <div class="offcanvas-body">
-      <ul class="navbar-nav flex-column w-100">
-        <li class="nav-item mb-2 text-center">
-          <a (click)="toHome()" class="nav-link" aria-current="page">Home</a>
-        </li>
-        <li class="nav-item mb-2 text-center">
-          <a routerLink="/dashboard" class="nav-link">Dashboard</a>
-        </li>
-      </ul>
-    </div>
-  </div>
+  </main>
 
-  <div class="content flex-grow-1 position-relative overflow-hidden">
-    <img src="/img/ranger.png" class="img-fluid position-absolute top-50 start-50 translate-middle" 
-         alt="Ford Ranger" style="z-index: 0; max-width: 90%; height: auto; opacity: 0.7;" />
-    
-    <div class="card p-4 text-center shadow-lg position-absolute top-50 start-50 translate-middle" 
-         style="max-width: 400px; background-color: rgba(255, 255, 255, 0.95); z-index: 1;">
-      <h2 class="card-title fs-4 mb-2">Sistema de dados FORD</h2>
-      <p class="card-text fs-6 mb-4">Seja bem-vindo!</p>
-      <a class="text-primary fw-bold" href="#">Sair</a>
-    </div>
-  </div>
-
-  <router-outlet></router-outlet>
+  <footer class="bg-dark text-white text-center p-3">
+    <p>&copy; {{ currentYear }} Ford App. Todos os direitos reservados.</p>
+  </footer>
 </div>

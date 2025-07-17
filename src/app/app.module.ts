@@ -9,8 +9,12 @@ import { HomeModule } from './home/home.module';
 import { provideHttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    // GARANTA QUE CadastroComponent NÃO ESTÁ NESTA LISTA
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
