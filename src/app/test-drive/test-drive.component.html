@@ -53,9 +53,9 @@
     <div class="card mx-auto shadow-lg p-4 mb-4" style="max-width: 768px;">
       <form [formGroup]="testDriveForm" (ngSubmit)="onSubmit()">
         <div class="mb-4">
-          <h2 class="fs-5 text-secondary mb-3">Seus Dados</h2>
+          <h2 class="fs-5 text-secondary mb-3">Seus Dados</h2> 
           <div class="row g-3">
-            <div class="col-md-6">
+            <div class="col-md-12"> 
               <label for="name" class="form-label text-muted mb-1">Nome Completo</label>
               <input
                 type="text"
@@ -63,38 +63,18 @@
                 formControlName="name"
                 class="form-control"
                 placeholder="Seu nome"
+                [class.is-invalid]="testDriveForm.get('name')?.invalid && (testDriveForm.get('name')?.dirty || testDriveForm.get('name')?.touched)"
               />
               <div *ngIf="testDriveForm.get('name')?.invalid && (testDriveForm.get('name')?.dirty || testDriveForm.get('name')?.touched)" class="text-danger small mt-1">
                 Nome é obrigatório.
               </div>
             </div>
-            <div class="col-md-6">
-              <label for="email" class="form-label text-muted mb-1">Email</label>
-              <input
-                type="email"
-                id="email"
-                formControlName="email"
-                class="form-control"
-                placeholder="seu.email@example.com"
-              />
-              <div *ngIf="testDriveForm.get('email')?.invalid && (testDriveForm.get('email')?.dirty || testDriveForm.get('email')?.touched)" class="text-danger small mt-1">
-                <span *ngIf="testDriveForm.get('email')?.errors?.['required']">Email é obrigatório.</span>
-                <span *ngIf="testDriveForm.get('email')?.errors?.['email']">Email inválido.</span>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <label for="phone" class="form-label text-muted mb-1">Telefone</label>
-              <input
-                type="tel"
-                id="phone"
-                formControlName="phone"
-                class="form-control"
-                placeholder="(XX) XXXXX-XXXX"
-              />
-              <div *ngIf="testDriveForm.get('phone')?.invalid && (testDriveForm.get('phone')?.dirty || testDriveForm.get('phone')?.touched)" class="text-danger small mt-1">
-                Telefone é obrigatório.
-              </div>
-            </div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <h2 class="fs-5 text-secondary mb-3">Detalhes do Agendamento</h2>
+          <div class="row g-3">
             <div class="col-md-6">
               <label for="vehicle" class="form-label text-muted mb-1">Veículo de Interesse</label>
               <select
@@ -116,9 +96,12 @@
                 id="date"
                 formControlName="date"
                 class="form-control"
+                [min]="currentDate"
+                [class.is-invalid]="testDriveForm.get('date')?.invalid && (testDriveForm.get('date')?.dirty || testDriveForm.get('date')?.touched)"
               />
               <div *ngIf="testDriveForm.get('date')?.invalid && (testDriveForm.get('date')?.dirty || testDriveForm.get('date')?.touched)" class="text-danger small mt-1">
                 Data é obrigatória.
+                <span *ngIf="testDriveForm.get('date')?.errors?.['dateInPast']">A data não pode ser anterior ao dia atual.</span>
               </div>
             </div>
             <div class="col-md-6">
@@ -128,61 +111,14 @@
                 id="time"
                 formControlName="time"
                 class="form-control"
+                [min]="minTime"
+                [max]="maxTime"
+                [class.is-invalid]="testDriveForm.get('time')?.invalid && (testDriveForm.get('time')?.dirty || testDriveForm.get('time')?.touched)"
               />
               <div *ngIf="testDriveForm.get('time')?.invalid && (testDriveForm.get('time')?.dirty || testDriveForm.get('time')?.touched)" class="text-danger small mt-1">
                 Horário é obrigatório.
+                <span *ngIf="testDriveForm.get('time')?.errors?.['timeInvalid']">O horário deve ser entre 06:00 e 23:00.</span>
               </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="mb-4">
-          <h2 class="fs-5 text-secondary mb-3">Termos de Privacidade (LGPD)</h2>
-          <div class="mb-3">
-            <div class="form-check">
-              <input
-                id="termsAccepted"
-                type="checkbox"
-                formControlName="termsAccepted"
-                class="form-check-input"
-              />
-              <label for="termsAccepted" class="form-check-label text-dark">
-                Li e concordo com os <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709compilado.htm" target="_blank" class="text-primary text-decoration-underline">Termos de Uso</a>.
-              </label>
-            </div>
-            <div *ngIf="testDriveForm.get('termsAccepted')?.invalid && (testDriveForm.get('termsAccepted')?.dirty || testDriveForm.get('termsAccepted')?.touched)" class="text-danger small mt-1">
-              Você deve aceitar os Termos de Uso.
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <div class="form-check">
-              <input
-                id="privacyPolicyAccepted"
-                type="checkbox"
-                formControlName="privacyPolicyAccepted"
-                class="form-check-input"
-              />
-              <label for="privacyPolicyAccepted" class="form-check-label text-dark">
-                Li e concordo com a <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709compilado.htm" target="_blank" class="text-primary text-decoration-underline">Política de Privacidade</a>.
-              </label>
-            </div>
-            <div *ngIf="testDriveForm.get('privacyPolicyAccepted')?.invalid && (testDriveForm.get('privacyPolicyAccepted')?.dirty || testDriveForm.get('privacyPolicyAccepted')?.touched)" class="text-danger small mt-1">
-              Você deve aceitar a Política de Privacidade.
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <div class="form-check">
-              <input
-                id="marketingConsent"
-                type="checkbox"
-                formControlName="marketingConsent"
-                class="form-check-input"
-              />
-              <label for="marketingConsent" class="form-check-label text-dark">
-                Concordo em receber comunicações de marketing da Ford. (Opcional)
-              </label>
             </div>
           </div>
         </div>
@@ -198,11 +134,15 @@
         </div>
       </form>
 
-      <div *ngIf="formSubmitted && testDriveForm.valid" class="alert alert-success text-center mt-4" role="alert" style="position: relative; z-index: 1000; font-size: 1.2em; font-weight: bold;">
-        Olá, {{ bookedName }}! Seu Test-Drive foi agendado com sucesso para {{ testDriveForm.value.date }} às {{ testDriveForm.value.time }}! Entraremos em contato em breve.
+      <!-- Mensagem de sucesso: agora controlada por 'showSuccessMessage' e com botão de fechar -->
+      <div *ngIf="showSuccessMessage" class="alert alert-success text-center mt-4" role="alert" style="position: relative; z-index: 1000; font-size: 1.2em; font-weight: bold;">
+        Olá, {{ bookedName }}! Seu Test-Drive foi agendado com sucesso para {{ testDriveForm.value.date }} às {{ bookedTime }}! Entraremos em contato em breve. 
+        <button type="button" class="btn-close" (click)="dismissSuccessMessage()" aria-label="Close"></button>
       </div>
-      <div *ngIf="formSubmitted && testDriveForm.invalid" class="alert alert-danger text-center mt-4" role="alert" style="position: relative; z-index: 1000; font-size: 1.2em; font-weight: bold;">
-        Por favor, preencha todos os campos obrigatórios e aceite os termos.
+
+      <!-- Mensagem de erro: agora só aparece se o formulário estiver inválido E não houver mensagem de sucesso -->
+      <div *ngIf="formSubmitted && testDriveForm.invalid && !showSuccessMessage" class="alert alert-danger text-center mt-4" role="alert" style="position: relative; z-index: 1000; font-size: 1.2em; font-weight: bold;">
+        Por favor, preencha todos os campos obrigatórios.
       </div>
     </div>
   </div>
