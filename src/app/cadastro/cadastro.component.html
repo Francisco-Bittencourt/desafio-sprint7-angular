@@ -51,14 +51,14 @@
           Cadastrar
         </button>
 
-        <button 
-          *ngIf="cadastroSuccess"
-          type="button" 
-          class="btn btn-success mt-3" 
-          (click)="irParaDashboard()"
-        >
-          Ir para Dashboard
-        </button>
+        <button
+  *ngIf="cadastroSuccess"
+  type="button"
+  class="btn btn-success mt-3"
+  (click)="irParaHome()" 
+>
+  Ir para Home
+</button>
 
         <button type="button" class="btn btn-outline-secondary" (click)="voltarParaLogin()">Voltar para Login</button>
       </div>

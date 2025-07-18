@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'login' },
+  { path: '', pathMatch: 'full', redirectTo: 'home' }, // <--- ALTERADO AQUI para 'home'
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent },
@@ -15,13 +15,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./test-drive/test-drive.module').then((m) => m.TestDriveModule),
   },
-  // --- NOVA ROTA PARA O CADASTRO COM LAZY LOADING ---
   {
-    path: 'cadastro', // A rota para o formulário de cadastro
+    path: 'cadastro',
     loadChildren: () =>
-      import('./cadastro/cadastro.module').then((m) => m.CadastroModule), // Carrega o CadastroModule
+      import('./cadastro/cadastro.module').then((m) => m.CadastroModule),
   },
-  // --- FIM DA NOVA ROTA ---
 ];
 
 @NgModule({
