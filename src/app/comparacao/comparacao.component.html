@@ -9,95 +9,92 @@
           <td *ngFor="let car of selectedCarsForComparison; let i = index">
             <img [src]="car.image" width="100" alt="{{ car.nome }}">
           </td>
-          <!-- Preenche colunas vazias se menos de 4 carros selecionados -->
-          <td *ngFor="let i of [].constructor(4 - selectedCarsForComparison.length)"></td>
+          <!-- Removido: Preenchimento de colunas vazias -->
         </tr>
         <tr>
           <td>Modelo</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.nome }}</td>
-          <td *ngFor="let i of [].constructor(4 - selectedCarsForComparison.length)"></td>
+          <!-- Removido: Preenchimento de colunas vazias -->
         </tr>
         <tr>
           <td>VIN</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.vin }}</td>
-          <td *ngFor="let i of [].constructor(4 - selectedCarsForComparison.length)"></td>
+          <!-- Removido: Preenchimento de colunas vazias -->
         </tr>
-        <!-- NOVAS LINHAS ADICIONADAS PARA DETALHES -->
         <tr>
           <td>ID</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.id }}</td>
-          <td *ngFor="let i of [].constructor(4 - selectedCarsForComparison.length)"></td>
+          <!-- Removido: Preenchimento de colunas vazias -->
         </tr>
         <tr>
           <td>Odômetro</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.odometro | number }} Km</td>
-          <td *ngFor="let i of [].constructor(4 - selectedCarsForComparison.length)"></td>
+          <!-- Removido: Preenchimento de colunas vazias -->
         </tr>
         <tr>
           <td>Nível Combustível</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.nivelCombustivel }}%</td>
-          <td *ngFor="let i of [].constructor(4 - selectedCarsForComparison.length)"></td>
+          <!-- Removido: Preenchimento de colunas vazias -->
         </tr>
         <tr>
           <td>Status</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.status === 'on' ? 'Ligado' : 'Desligado' }}</td>
-          <td *ngFor="let i of [].constructor(4 - selectedCarsForComparison.length)"></td>
+          <!-- Removido: Preenchimento de colunas vazias -->
         </tr>
         <tr>
           <td>Latitude</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.lat }}</td>
-          <td *ngFor="let i of [].constructor(4 - selectedCarsForComparison.length)"></td>
+          <!-- Removido: Preenchimento de colunas vazias -->
         </tr>
         <tr>
           <td>Longitude</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.long }}</td>
-          <td *ngFor="let i of [].constructor(4 - selectedCarsForComparison.length)"></td>
+          <!-- Removido: Preenchimento de colunas vazias -->
         </tr>
-        <!-- FIM DAS NOVAS LINHAS -->
         <tr>
           <td>Altura da caçamba (mm)</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.alturaCacamba === 0 ? 'N/A' : car.alturaCacamba }}</td>
-          <td *ngFor="let i of [].constructor(4 - selectedCarsForComparison.length)"></td>
+          <!-- Removido: Preenchimento de colunas vazias -->
         </tr>
         <tr>
           <td>Altura do veículo (mm)</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.alturaVeiculo }}</td>
-          <td *ngFor="let i of [].constructor(4 - selectedCarsForComparison.length)"></td>
+          <!-- Removido: Preenchimento de colunas vazias -->
         </tr>
         <tr>
           <td>Altura livre do solo (mm)</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.alturaSolo }}</td>
-          <td *ngFor="let i of [].constructor(4 - selectedCarsForComparison.length)"></td>
+          <!-- Removido: Preenchimento de colunas vazias -->
         </tr>
         <tr>
           <td>Capacidade de carga (Kg)</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.capacidadeCarga }}</td>
-          <td *ngFor="let i of [].constructor(4 - selectedCarsForComparison.length)"></td>
+          <!-- Removido: Preenchimento de colunas vazias -->
         </tr>
         <tr>
           <td>Motor</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.motor }}</td>
-          <td *ngFor="let i of [].constructor(4 - selectedCarsForComparison.length)"></td>
+          <!-- Removido: Preenchimento de colunas vazias -->
         </tr>
         <tr>
           <td>Potência (cv)</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.potencia }}</td>
-          <td *ngFor="let i of [].constructor(4 - selectedCarsForComparison.length)"></td>
+          <!-- Removido: Preenchimento de colunas vazias -->
         </tr>
         <tr>
           <td>Volume de caçamba (L)</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.volumeCacamba }}</td>
-          <td *ngFor="let i of [].constructor(4 - selectedCarsForComparison.length)"></td>
+          <!-- Removido: Preenchimento de colunas vazias -->
         </tr>
         <tr>
           <td>Roda</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.roda }}</td>
-          <td *ngFor="let i of [].constructor(4 - selectedCarsForComparison.length)"></td>
+          <!-- Removido: Preenchimento de colunas vazias -->
         </tr>
         <tr>
           <td>Preço</td>
           <td *ngFor="let car of selectedCarsForComparison">R$ {{ car.preco | number:'1.2-2' }}</td>
-          <td *ngFor="let i of [].constructor(4 - selectedCarsForComparison.length)"></td>
+          <!-- Removido: Preenchimento de colunas vazias -->
         </tr>
       </tbody>
     </table>
@@ -111,9 +108,7 @@
        [class.blurred-background]="showCompareModal"
        style="max-width: 90%; width: 100%;">
     <h2 class="text-primary mb-4">Página de Comparação de Veículos</h2>
-    <br>
-    <br>
-    
+    <p class="text-muted">Selecione até 4 carros para comparar.</p>
 
     <!-- Mensagens de Alerta Personalizadas -->
     <div *ngIf="message" class="alert alert-warning alert-dismissible fade show" role="alert">
