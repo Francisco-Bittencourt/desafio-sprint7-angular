@@ -21,6 +21,14 @@
       </div>
 
       <div class="mb-3">
+        <label for="phone" class="form-label">Celular</label>
+        <input type="tel" class="form-control" id="phone" formControlName="phone" placeholder="(XX) XXXXX-XXXX">
+        <div *ngIf="cadastroForm.get('phone')?.invalid && (cadastroForm.get('phone')?.dirty || cadastroForm.get('phone')?.touched)" class="text-danger small mt-1">
+          Celular é obrigatório.
+        </div>
+      </div>
+
+      <div class="mb-3">
         <label for="password" class="form-label">Senha</label>
         <input type="password" class="form-control" id="password" formControlName="password" placeholder="Mínimo 6 caracteres">
         <div *ngIf="cadastroForm.get('password')?.invalid && (cadastroForm.get('password')?.dirty || cadastroForm.get('password')?.touched)" class="text-danger small mt-1">

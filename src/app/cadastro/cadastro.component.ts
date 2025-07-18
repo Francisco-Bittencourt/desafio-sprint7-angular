@@ -28,6 +28,7 @@ export class CadastroComponent implements OnInit {
     this.cadastroForm = new FormGroup({
       name: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
+      phone: new FormControl('', Validators.required), // Adicionado: Campo de celular
       password: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
   }
@@ -73,16 +74,16 @@ export class CadastroComponent implements OnInit {
       return;
     }
 
-    users.push({ username: username, password: password });
+    // Incluir o telefone no objeto do usuário se você quiser armazená-lo
+    // Por enquanto, apenas o nome de usuário e a senha são armazenados no localStorage
+    users.push({ username: username, password: password }); 
     localStorage.setItem('registeredUsers', JSON.stringify(users));
 
     this.registeredName = username;
     this.cadastroSuccess = true;
 
-    // --- ADICIONADO: SALVAR O NOME DE USUÁRIO NO LOCALSTORAGE APÓS O CADASTRO ---
-    localStorage.setItem('username', username); // O HomeComponent espera por 'username'
-    localStorage.setItem('isLoggedIn', 'true'); // Manter também para uma verificação mais robusta
-    // --- FIM ADICIONADO ---
+    localStorage.setItem('username', username);
+    localStorage.setItem('isLoggedIn', 'true');
 
     console.log('Novo usuário cadastrado e lista atualizada no localStorage:');
     console.log(users);
