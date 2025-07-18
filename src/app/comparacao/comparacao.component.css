@@ -1,5 +1,83 @@
-/* src/app/comparacao-veiculos/comparacao-veiculos.component.css */
+/* src/app/comparacao-veiculos/comparacao.component.css */
 .card {
   border-radius: 10px;
 }
-/* You can add more specific styles for this page here */
+
+/* Estilos básicos para demonstração */
+body { font-family: sans-serif; margin: 20px; } /* Note: body styles might be overridden by global Angular styles */
+.modelcars { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+.modelcars li { border: 1px solid #ccc; padding: 15px; text-align: center; width: 280px; box-shadow: 2px 2px 8px rgba(0,0,0,0.1); }
+.photocar { max-width: 100%; height: auto; margin-bottom: 10px; }
+.infocar { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
+.info { text-align: left; flex-grow: 1; margin-left: 10px; }
+.textmodel { font-weight: bold; display: block; }
+.textprice { color: green; display: block; margin-top: 5px; }
+
+/* Modal de Comparação */
+#compare {
+  position: fixed;
+  top: 50%; /* Centraliza verticalmente */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translate(-50%, -50%); /* Ajusta para centralização exata */
+  width: 90%; /* Largura do modal */
+  max-width: 900px; /* Largura máxima para telas maiores */
+  background-color: rgba(0, 0, 0, 0.9); /* Fundo mais escuro para o modal */
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: hidden; /* Padrão: sem rolagem vertical */
+  z-index: 1001; /* Z-index maior que o do fundo desfocado */
+  border-radius: 10px; /* Bordas arredondadas para o modal */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Sombra para destacar o modal */
+}
+#compare table {
+  width: 100%; /* Ocupa toda a largura do modal */
+  margin: 20px auto;
+  border-collapse: collapse;
+  text-align: left;
+  table-layout: fixed; /* Ajuda a distribuir as colunas igualmente */
+  word-wrap: break-word; /* Garante que o texto longo quebre a linha */
+}
+#compare th, #compare td {
+  border: 1px solid #555;
+  padding: 5px; /* Reduzido o padding para economizar mais espaço */
+  vertical-align: top;
+  font-size: 0.8em; /* Fonte ligeiramente menor para economizar mais espaço */
+}
+#compare td:first-child { font-weight: bold; }
+#compare img { max-width: 100px; /* Reduzido o tamanho máximo da imagem */ height: auto; display: block; margin: 0 auto; }
+
+/* Footer */
+footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  margin-top: 40px;
+  border-top: 1px solid #eee;
+}
+#social ul { list-style: none; padding: 0; display: flex; align-items: center; }
+#social li { margin-right: 15px; }
+.redesociais { font-weight: bold; margin-right: 10px; }
+#social img { width: 30px; height: 30px; }
+
+/* Estilo para fundo desfocado */
+.blurred-background {
+  filter: blur(5px); /* Aplica um desfoque de 5px */
+  transition: filter 0.3s ease; /* Transição suave para o efeito */
+  /* pointer-events: none; */ /* Não usar aqui, pois desativaria a interação com o card */
+}
+
+/* Media query para dispositivos móveis: rolagem vertical ativada */
+@media (max-width: 768px) { /* Aplica para telas com largura máxima de 768px (tablets e celulares) */
+  #compare {
+    overflow-y: auto; /* Permite rolagem vertical */
+    max-height: 90vh; /* Garante que o modal não ocupe mais de 90% da altura da viewport */
+  }
+  #compare table {
+    font-size: 0.7em; /* Reduz ainda mais a fonte para mobile */
+  }
+  #compare img {
+    max-width: 60px; /* Reduz o tamanho da imagem para mobile */
+  }
+}
