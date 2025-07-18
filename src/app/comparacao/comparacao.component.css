@@ -1,8 +1,5 @@
-/* src/app/comparacao/comparacao.component.css */
-/* Adicione seus estilos específicos para a página de comparação aqui */
+/* src/app/comparacao-veiculos/comparacao-veiculos.component.css */
 .card {
-  transition: transform 0.2s ease-in-out;
+  border-radius: 10px;
 }
-.card:hover {
-  transform: translateY(-5px);
-}
+/* You can add more specific styles for this page here */

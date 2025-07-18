@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'home' }, // <--- ALTERADO AQUI para 'home'
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent },
@@ -20,6 +20,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./cadastro/cadastro.module').then((m) => m.CadastroModule),
   },
+  // --- A ROTA CRUCIAL QUE PRECISA ESTAR AQUI ---
+  {
+    path: 'comparacao-veiculos', // Este é o caminho exato que o router está procurando
+    loadChildren: () =>
+      import('./comparacao/comparacao.module').then((m) => m.ComparacaoVeiculosModule),
+  },
+  // --- FIM DA ROTA CRUCIAL ---
 ];
 
 @NgModule({

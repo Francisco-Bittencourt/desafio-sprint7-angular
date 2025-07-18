@@ -11,14 +11,15 @@
       <li class="nav-item mb-2 text-center">
         <a routerLink="/test-drive" class="nav-link">Test Drive</a>
       </li>
+      <!-- O link "Comparação de Veículos" foi removido daqui -->
     </ul>
     <div class="mt-auto w-100 text-center pb-3">
       <a (click)="toLogout()" class="nav-link" style="cursor: pointer;">Sair</a>
     </div>
   </nav>
 
-  <button class="fab-menu-button" type="button" 
-            data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" 
+  <button class="fab-menu-button" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -40,6 +41,7 @@
         <li class="nav-item mb-2 text-center">
           <a routerLink="/test-drive" class="nav-link">Test Drive</a>
         </li>
+        <!-- O link "Comparação de Veículos" foi removido daqui -->
       </ul>
       <div class="mt-auto w-100 text-center pb-3">
         <a (click)="toLogout()" class="nav-link" style="cursor: pointer;">Sair</a>
@@ -155,7 +157,7 @@
         <tbody>
           <tr *ngIf="!vehicleData && !selectCarForms.controls.vin.value">
             <td colspan="6" class="text-center p-4 text-muted">
-              Seleccione um veículo para ver os detalhes ou digite um VIN.
+              Selecione um veículo para ver os detalhes ou digite um VIN.
             </td>
           </tr>
           <tr *ngIf="!vehicleData && selectCarForms.controls.vin.value">
@@ -176,7 +178,10 @@
     </div>
 
     <div class="text-center mt-4">
-      <a routerLink="/test-drive" class="btn btn-primary btn-lg">Agende seu Test Drive</a>
+      <a routerLink="/test-drive" class="btn btn-primary btn-lg me-2">Agende seu Test Drive</a>
+      <!-- NOVO BOTÃO ADICIONADO AQUI -->
+      <a routerLink="/comparacao-veiculos" class="btn btn-info btn-lg">Comparação de Veículos</a>
+      <!-- FIM DO NOVO BOTÃO -->
     </div>
     </div>
 </div>

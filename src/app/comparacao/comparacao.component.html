@@ -1,46 +1,12 @@
-<div class="container mt-5">
-  <h1 class="text-center text-primary mb-4">Comparar Veículos</h1>
-
-  <p class="text-center lead">
-    Esta é a página onde você irá implementar a lógica para comparar os 4 veículos da API.
-  </p>
-
-  <div class="row">
-    <div class="col-md-6 col-lg-3 mb-4">
-      <div class="card shadow-sm h-100">
-        <div class="card-body text-center">
-          <h5 class="card-title">Veículo 1</h5>
-          <p class="card-text">Detalhes do Veículo 1...</p>
-        </div>
-      </div>
+<!-- src/app/comparacao-veiculos/comparacao-veiculos.component.html -->
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
+  <div class="card p-5 shadow-sm text-center" style="max-width: 600px; width: 100%;">
+    <h2 class="text-primary mb-4">Página de Comparação de Veículos</h2>
+    <p class="text-muted">Esta é uma página em branco para a funcionalidade de comparação de veículos.</p>
+    <p>Você pode adicionar o conteúdo de comparação aqui.</p>
+    <div class="d-grid gap-2 mt-4">
+      <button type="button" class="btn btn-primary" (click)="goToDashboard()">Voltar para o Dashboard</button>
+      <button type="button" class="btn btn-outline-secondary" (click)="goToHome()">Ir para Home</button>
     </div>
-    <div class="col-md-6 col-lg-3 mb-4">
-      <div class="card shadow-sm h-100">
-        <div class="card-body text-center">
-          <h5 class="card-title">Veículo 2</h5>
-          <p class="card-text">Detalhes do Veículo 2...</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 col-lg-3 mb-4">
-      <div class="card shadow-sm h-100">
-        <div class="card-body text-center">
-          <h5 class="card-title">Veículo 3</h5>
-          <p class="card-text">Detalhes do Veículo 3...</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 col-lg-3 mb-4">
-      <div class="card shadow-sm h-100">
-        <div class="card-body text-center">
-          <h5 class="card-title">Veículo 4</h5>
-          <p class="card-text">Detalhes do Veículo 4...</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="text-center mt-5">
-    <button type="button" class="btn btn-outline-primary" (click)="voltarParaDashboard()">Voltar para o Dashboard</button>
   </div>
 </div>
