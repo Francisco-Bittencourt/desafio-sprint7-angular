@@ -33,11 +33,11 @@
         <h6 class="text-muted">Acordo de Usuário</h6>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="termsAndConditions" [(ngModel)]="termsAndConditionsAccepted" name="termsAndConditions" [ngModelOptions]="{standalone: true}" required>
-          <label class="form-check-label" for="termsAndConditions">Eu li e aceito os Termos e Condições.</label>
+          <label class="form-check-label" for="termsAndConditions">Eu li e aceito os <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709compilado.htm" target="_blank" class="text-primary text-decoration-underline">Termos e Condições</a>.</label>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="privacyPolicy" [(ngModel)]="privacyPolicyAccepted" name="privacyPolicy" [ngModelOptions]="{standalone: true}" required>
-          <label class="form-check-label" for="privacyPolicy">Li e aceito a Política de Privacidade.</label>
+          <label class="form-check-label" for="privacyPolicy">Li e aceito a <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709compilado.htm" target="_blank" class="text-primary text-decoration-underline">Política de Privacidade</a>.</label>
         </div>
         <div *ngIf="termsError" class="text-danger small mt-2">{{ termsError }}</div>
       </div>
@@ -52,13 +52,13 @@
         </button>
 
         <button
-  *ngIf="cadastroSuccess"
-  type="button"
-  class="btn btn-success mt-3"
-  (click)="irParaHome()" 
->
-  Ir para Home
-</button>
+          *ngIf="cadastroSuccess"
+          type="button"
+          class="btn btn-success mt-3"
+          (click)="irParaHome()" 
+        >
+          Ir para Home
+        </button>
 
         <button type="button" class="btn btn-outline-secondary" (click)="voltarParaLogin()">Voltar para Login</button>
       </div>
