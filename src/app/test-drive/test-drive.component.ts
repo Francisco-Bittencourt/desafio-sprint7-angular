@@ -14,14 +14,15 @@ import { Veiculo } from '../models/veiculo.model';
 export class TestDriveComponent implements OnInit, OnDestroy {
   testDriveForm!: FormGroup;
   vehicles: Veiculo[] = [];
-  formSubmitted: boolean = false; // Indica se uma tentativa de submissão foi feita (para exibir erros de validação)
-  showSuccessMessage: boolean = false; // Controla a visibilidade da mensagem de sucesso
+  formSubmitted: boolean = false;
+  showSuccessMessage: boolean = false;
   private destroy$ = new Subject<void>();
   currentDate: string;
   minTime: string = '06:00';
   maxTime: string = '23:00';
   bookedName: string = '';
-  bookedTime: string = ''; // NOVO: Propriedade para armazenar o horário agendado
+  bookedTime: string = '';
+  bookedDate: string = ''; // NOVO: Propriedade para armazenar a data agendada
 
   constructor(
     private router: Router,
@@ -121,7 +122,8 @@ export class TestDriveComponent implements OnInit, OnDestroy {
 
     if (this.testDriveForm.valid) {
       this.bookedName = this.testDriveForm.value.name;
-      this.bookedTime = this.testDriveForm.value.time; // NOVO: Armazena o horário antes do reset
+      this.bookedTime = this.testDriveForm.value.time;
+      this.bookedDate = this.testDriveForm.value.date; // NOVO: Armazena a data antes do reset
       this.showSuccessMessage = true;
       console.log('Formulário de Test-Drive enviado com sucesso!', this.testDriveForm.value);
 
@@ -145,7 +147,8 @@ export class TestDriveComponent implements OnInit, OnDestroy {
   dismissSuccessMessage(): void {
     this.showSuccessMessage = false;
     this.bookedName = '';
-    this.bookedTime = ''; // Limpa o horário agendado também
+    this.bookedTime = '';
+    this.bookedDate = ''; // Limpa a data agendada também
     this.formSubmitted = false;
     this.cdr.detectChanges();
   }

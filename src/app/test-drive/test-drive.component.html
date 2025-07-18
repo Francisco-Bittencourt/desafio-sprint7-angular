@@ -136,7 +136,7 @@
 
       <!-- Mensagem de sucesso: agora controlada por 'showSuccessMessage' e com botão de fechar -->
       <div *ngIf="showSuccessMessage" class="alert alert-success text-center mt-4" role="alert" style="position: relative; z-index: 1000; font-size: 1.2em; font-weight: bold;">
-        Olá, {{ bookedName }}! Seu Test-Drive foi agendado com sucesso para {{ testDriveForm.value.date }} às {{ bookedTime }}! Entraremos em contato em breve. 
+        Olá, {{ bookedName }}! Seu Test-Drive foi agendado com sucesso para {{ bookedDate }} às {{ bookedTime }}! Entraremos em contato em breve.
         <button type="button" class="btn-close" (click)="dismissSuccessMessage()" aria-label="Close"></button>
       </div>
 
