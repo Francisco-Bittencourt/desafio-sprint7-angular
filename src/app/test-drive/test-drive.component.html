@@ -96,12 +96,12 @@
                 id="date"
                 formControlName="date"
                 class="form-control"
-                [min]="currentDate"
+                [min]="minSelectableDate"
                 [class.is-invalid]="testDriveForm.get('date')?.invalid && (testDriveForm.get('date')?.dirty || testDriveForm.get('date')?.touched)"
               />
               <div *ngIf="testDriveForm.get('date')?.invalid && (testDriveForm.get('date')?.dirty || testDriveForm.get('date')?.touched)" class="text-danger small mt-1">
-                Data é obrigatória.
-                <span *ngIf="testDriveForm.get('date')?.errors?.['dateInPast']">A data não pode ser anterior ao dia atual.</span>
+                <span *ngIf="testDriveForm.get('date')?.errors?.['required']">Data é obrigatória.</span>
+                <span *ngIf="testDriveForm.get('date')?.errors?.['dateBeforeTomorrow']">A data não pode ser anterior ao dia seguinte.</span>
               </div>
             </div>
             <div class="col-md-6">

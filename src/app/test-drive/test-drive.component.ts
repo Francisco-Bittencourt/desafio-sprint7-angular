@@ -1,3 +1,4 @@
+// src/app/test-drive/test-drive.component.ts
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,30 +18,34 @@ export class TestDriveComponent implements OnInit, OnDestroy {
   formSubmitted: boolean = false;
   showSuccessMessage: boolean = false;
   private destroy$ = new Subject<void>();
-  currentDate: string;
+  minSelectableDate: string; // Renomeado para indicar a data mínima selecionável
   minTime: string = '06:00';
   maxTime: string = '23:00';
   bookedName: string = '';
   bookedTime: string = '';
-  bookedDate: string = ''; // NOVO: Propriedade para armazenar a data agendada
+  bookedDate: string = '';
 
   constructor(
     private router: Router,
     private dashboardService: DashboardService,
     private cdr: ChangeDetectorRef
   ) {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = (today.getMonth() + 1).toString().padStart(2, '0');
-    const day = today.getDate().toString().padStart(2, '0');
-    this.currentDate = `${year}-${month}-${day}`;
+    // Calcula a data de amanhã para ser a data mínima selecionável
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1); // Define para amanhã
+    const year = tomorrow.getFullYear();
+    const month = (tomorrow.getMonth() + 1).toString().padStart(2, '0');
+    const day = tomorrow.getDate().toString().padStart(2, '0');
+    this.minSelectableDate = `${year}-${month}-${day}`;
   }
 
   ngOnInit(): void {
     this.testDriveForm = new FormGroup({
       name: new FormControl('', Validators.required),
-      vehicle: new FormControl('', Validators.required),
-      date: new FormControl(this.currentDate, [Validators.required, this.dateNotInPastValidator()]),
+      vehicle: new FormControl('', Validators.required), // Corrigido: Removido o 'new' duplicado
+      // Não define um valor inicial para o campo de data, permitindo que comece vazio.
+      // O atributo 'min' no HTML e o validador garantirão a data mínima.
+      date: new FormControl('', [Validators.required, this.dateNotBeforeTomorrowValidator()]),
       time: new FormControl('', [Validators.required, this.timeRangeValidator()]),
     });
 
@@ -52,17 +57,17 @@ export class TestDriveComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  dateNotInPastValidator(): ValidatorFn {
+  // Validador para garantir que a data selecionada não seja anterior a amanhã
+  dateNotBeforeTomorrowValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       if (!control.value) {
-        return null;
+        return null; // Não valida se vazio, Validators.required já trata isso
       }
-      const selectedDate = new Date(control.value);
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
+      const selectedDateString = control.value; // O valor já está no formato 'YYYY-MM-DD' do input type="date"
 
-      if (selectedDate < today) {
-        return { 'dateInPast': true };
+      // Compara diretamente a string da data selecionada com a string da data mínima
+      if (selectedDateString < this.minSelectableDate) {
+        return { 'dateBeforeTomorrow': true };
       }
       return null;
     };
@@ -123,18 +128,14 @@ export class TestDriveComponent implements OnInit, OnDestroy {
     if (this.testDriveForm.valid) {
       this.bookedName = this.testDriveForm.value.name;
       this.bookedTime = this.testDriveForm.value.time;
-      this.bookedDate = this.testDriveForm.value.date; // NOVO: Armazena a data antes do reset
+      this.bookedDate = this.testDriveForm.value.date;
       this.showSuccessMessage = true;
       console.log('Formulário de Test-Drive enviado com sucesso!', this.testDriveForm.value);
 
       this.testDriveForm.reset();
-      const today = new Date();
-      const year = today.getFullYear();
-      const month = (today.getMonth() + 1).toString().padStart(2, '0');
-      const day = today.getDate().toString().padStart(2, '0');
-      this.currentDate = `${year}-${month}-${day}`;
-      this.testDriveForm.get('date')?.setValue(this.currentDate);
-      
+      // Após o reset, não definimos um valor para o campo de data,
+      // pois o usuário deseja que ele comece vazio e o 'min' no HTML
+      // garantirá a data mínima selecionável.
       this.formSubmitted = false;
       this.cdr.detectChanges();
     } else {
@@ -148,7 +149,7 @@ export class TestDriveComponent implements OnInit, OnDestroy {
     this.showSuccessMessage = false;
     this.bookedName = '';
     this.bookedTime = '';
-    this.bookedDate = ''; // Limpa a data agendada também
+    this.bookedDate = '';
     this.formSubmitted = false;
     this.cdr.detectChanges();
   }
