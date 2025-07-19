@@ -1,7 +1,20 @@
 // src/app/cadastro/cadastro.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
+
+// Custom validator function to check if passwords match
+export function matchPasswordsValidator(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const password = control.get('password');
+    const confirmPassword = control.get('confirmPassword');
+
+    if (password && confirmPassword && password.value !== confirmPassword.value) {
+      return { 'mismatch': true };
+    }
+    return null;
+  };
+}
 
 @Component({
   selector: 'app-cadastro',
@@ -21,6 +34,7 @@ export class CadastroComponent implements OnInit {
   termsError: string = '';
 
   userExistsError: string = '';
+  passwordVisible: boolean = false; // New property to control password visibility
 
   constructor(private router: Router) { }
 
@@ -28,9 +42,15 @@ export class CadastroComponent implements OnInit {
     this.cadastroForm = new FormGroup({
       name: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
-      phone: new FormControl('', Validators.required), // Adicionado: Campo de celular
-      password: new FormControl('', [Validators.required, Validators.minLength(6)])
-    });
+      phone: new FormControl('', Validators.required),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      confirmPassword: new FormControl('', Validators.required) // New field for confirm password
+    }, { validators: matchPasswordsValidator() }); // Apply custom validator to the form group
+  }
+
+  // Method to toggle password visibility
+  togglePasswordVisibility(): void {
+    this.passwordVisible = !this.passwordVisible;
   }
 
   onSubmit(): void {
@@ -47,7 +67,7 @@ export class CadastroComponent implements OnInit {
 
     if (this.cadastroForm.invalid) {
       console.warn('Formulário de cadastro inválido. Verifique os campos.');
-      this.cadastroForm.markAllAsTouched();
+      this.cadastroForm.markAllAsTouched(); // Mark all fields as touched to show errors
       return;
     }
 
@@ -74,8 +94,6 @@ export class CadastroComponent implements OnInit {
       return;
     }
 
-    // Incluir o telefone no objeto do usuário se você quiser armazená-lo
-    // Por enquanto, apenas o nome de usuário e a senha são armazenados no localStorage
     users.push({ username: username, password: password }); 
     localStorage.setItem('registeredUsers', JSON.stringify(users));
 
