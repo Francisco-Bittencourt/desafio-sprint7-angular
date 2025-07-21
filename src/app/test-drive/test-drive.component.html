@@ -56,13 +56,13 @@
           <h2 class="fs-5 text-secondary mb-3">Seus Dados</h2> 
           <div class="row g-3">
             <div class="col-md-12"> 
-              <label for="name" class="form-label text-muted mb-1">Nome Completo</label>
+              <label for="name" class="form-label text-muted mb-1">Nome e Sobrenome</label>
               <input
                 type="text"
                 id="name"
                 formControlName="name"
                 class="form-control"
-                placeholder="Seu nome"
+                placeholder="Seu nome e sobrenome"
                 [class.is-invalid]="testDriveForm.get('name')?.invalid && (testDriveForm.get('name')?.dirty || testDriveForm.get('name')?.touched)"
               />
               <div *ngIf="testDriveForm.get('name')?.invalid && (testDriveForm.get('name')?.dirty || testDriveForm.get('name')?.touched)" class="text-danger small mt-1">
