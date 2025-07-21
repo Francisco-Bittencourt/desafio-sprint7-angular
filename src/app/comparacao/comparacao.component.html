@@ -7,75 +7,75 @@
           <td *ngFor="let car of selectedCarsForComparison; let i = index">
             <img [src]="car.image" width="100" alt="{{ car.nome }}">
           </td>
-          </tr>
+        </tr>
         <tr>
           <td>Modelo</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.nome }}</td>
-          </tr>
+        </tr>
         <tr>
           <td>VIN</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.vin }}</td>
-          </tr>
+        </tr>
         <tr>
           <td>ID</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.id }}</td>
-          </tr>
+        </tr>
         <tr>
           <td>Odômetro</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.odometro | number }} Km</td>
-          </tr>
+        </tr>
         <tr>
           <td>Nível Combustível</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.nivelCombustivel }}%</td>
-          </tr>
+        </tr>
         <tr>
           <td>Status</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.status === 'on' ? 'Ligado' : 'Desligado' }}</td>
-          </tr>
+        </tr>
         <tr>
           <td>Latitude</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.lat }}</td>
-          </tr>
+        </tr>
         <tr>
           <td>Longitude</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.long }}</td>
-          </tr>
+        </tr>
         <tr>
           <td>Altura da caçamba (mm)</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.alturaCacamba === 0 ? 'N/A' : car.alturaCacamba }}</td>
-          </tr>
+        </tr>
         <tr>
           <td>Altura do veículo (mm)</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.alturaVeiculo }}</td>
-          </tr>
+        </tr>
         <tr>
           <td>Altura livre do solo (mm)</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.alturaSolo }}</td>
-          </tr>
+        </tr>
         <tr>
           <td>Capacidade de carga (Kg)</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.capacidadeCarga }}</td>
-          </tr>
+        </tr>
         <tr>
           <td>Motor</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.motor }}</td>
-          </tr>
+        </tr>
         <tr>
           <td>Potência (cv)</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.potencia }}</td>
-          </tr>
+        </tr>
         <tr>
           <td>Volume de caçamba (L)</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.volumeCacamba }}</td>
-          </tr>
+        </tr>
         <tr>
           <td>Roda</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.roda }}</td>
-          </tr>
+        </tr>
         <tr>
           <td>Preço</td>
           <td *ngFor="let car of selectedCarsForComparison">R$ {{ car.preco | number:'1.2-2' }}</td>
-          </tr>
+        </tr>
       </tbody>
     </table>
     <div style="text-align: center;padding-bottom: 20px;">
