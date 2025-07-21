@@ -10,12 +10,12 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    CadastroComponent // O CadastroComponent DEVE ser declarado APENAS AQUI
+    CadastroComponent 
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule, 
-    FormsModule, // ESSENCIAL para [(ngModel)] nos checkboxes
+    FormsModule, 
     RouterModule.forChild(routes)
   ],
   exports: [RouterModule]

@@ -1,4 +1,4 @@
-// src/app/test-drive/test-drive-routing.module.ts
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TestDriveComponent } from './test-drive.component';
@@ -8,7 +8,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)], // Usar forChild para módulos de feature
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class TestDriveRoutingModule {}

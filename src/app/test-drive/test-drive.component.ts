@@ -1,4 +1,4 @@
-// src/app/test-drive/test-drive.component.ts
+
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -18,7 +18,7 @@ export class TestDriveComponent implements OnInit, OnDestroy {
   formSubmitted: boolean = false;
   showSuccessMessage: boolean = false;
   private destroy$ = new Subject<void>();
-  minSelectableDate: string; // Renomeado para indicar a data mínima selecionável
+  minSelectableDate: string; 
   minTime: string = '06:00';
   maxTime: string = '23:00';
   bookedName: string = '';
@@ -30,9 +30,9 @@ export class TestDriveComponent implements OnInit, OnDestroy {
     private dashboardService: DashboardService,
     private cdr: ChangeDetectorRef
   ) {
-    // Calcula a data de amanhã para ser a data mínima selecionável
+    
     const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1); // Define para amanhã
+    tomorrow.setDate(tomorrow.getDate() + 1);
     const year = tomorrow.getFullYear();
     const month = (tomorrow.getMonth() + 1).toString().padStart(2, '0');
     const day = tomorrow.getDate().toString().padStart(2, '0');
@@ -42,9 +42,7 @@ export class TestDriveComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.testDriveForm = new FormGroup({
       name: new FormControl('', Validators.required),
-      vehicle: new FormControl('', Validators.required), // Corrigido: Removido o 'new' duplicado
-      // Não define um valor inicial para o campo de data, permitindo que comece vazio.
-      // O atributo 'min' no HTML e o validador garantirão a data mínima.
+      vehicle: new FormControl('', Validators.required),
       date: new FormControl('', [Validators.required, this.dateNotBeforeTomorrowValidator()]),
       time: new FormControl('', [Validators.required, this.timeRangeValidator()]),
     });
@@ -57,15 +55,13 @@ export class TestDriveComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  // Validador para garantir que a data selecionada não seja anterior a amanhã
   dateNotBeforeTomorrowValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       if (!control.value) {
-        return null; // Não valida se vazio, Validators.required já trata isso
+        return null; 
       }
-      const selectedDateString = control.value; // O valor já está no formato 'YYYY-MM-DD' do input type="date"
-
-      // Compara diretamente a string da data selecionada com a string da data mínima
+      const selectedDateString = control.value; 
+     
       if (selectedDateString < this.minSelectableDate) {
         return { 'dateBeforeTomorrow': true };
       }
@@ -133,9 +129,7 @@ export class TestDriveComponent implements OnInit, OnDestroy {
       console.log('Formulário de Test-Drive enviado com sucesso!', this.testDriveForm.value);
 
       this.testDriveForm.reset();
-      // Após o reset, não definimos um valor para o campo de data,
-      // pois o usuário deseja que ele comece vazio e o 'min' no HTML
-      // garantirá a data mínima selecionável.
+   
       this.formSubmitted = false;
       this.cdr.detectChanges();
     } else {

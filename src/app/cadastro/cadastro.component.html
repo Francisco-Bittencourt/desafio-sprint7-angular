@@ -55,7 +55,7 @@
         <div *ngIf="cadastroForm.get('confirmPassword')?.invalid && (cadastroForm.get('confirmPassword')?.dirty || cadastroForm.get('confirmPassword')?.touched)" class="text-danger small mt-1">
           <span *ngIf="cadastroForm.get('confirmPassword')?.errors?.['required']">Confirmação de senha é obrigatória.</span>
         </div>
-        <!-- Nova condição para exibir a mensagem de senhas não conferem -->
+    
         <div *ngIf="cadastroForm.errors?.['mismatch'] && (cadastroForm.get('confirmPassword')?.dirty || cadastroForm.get('confirmPassword')?.touched)" class="text-danger small mt-1">
           Senhas não conferem.
         </div>

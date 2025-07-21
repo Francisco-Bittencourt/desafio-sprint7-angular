@@ -36,12 +36,12 @@
 }
  
 .offcanvas {
-  background-color: #f8f9fa; /* Fundo claro para o offcanvas */
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+  background-color: #f8f9fa; 
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); 
 }
 
 .offcanvas .offcanvas-header {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Borda sutil */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
 }
 
 

@@ -1,4 +1,4 @@
-// src/app/app-routing.module.ts
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
@@ -20,13 +20,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./cadastro/cadastro.module').then((m) => m.CadastroModule),
   },
-  // --- A ROTA CRUCIAL QUE PRECISA ESTAR AQUI ---
+  
   {
-    path: 'comparacao-veiculos', // Este é o caminho exato que o router está procurando
+    path: 'comparacao-veiculos', 
     loadChildren: () =>
       import('./comparacao/comparacao.module').then((m) => m.ComparacaoVeiculosModule),
   },
-  // --- FIM DA ROTA CRUCIAL ---
+
 ];
 
 @NgModule({

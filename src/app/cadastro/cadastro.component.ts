@@ -1,9 +1,9 @@
-// src/app/cadastro/cadastro.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 
-// Custom validator function to check if passwords match
+
 export function matchPasswordsValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
     const password = control.get('password');
@@ -34,7 +34,7 @@ export class CadastroComponent implements OnInit {
   termsError: string = '';
 
   userExistsError: string = '';
-  passwordVisible: boolean = false; // New property to control password visibility
+  passwordVisible: boolean = false; 
 
   constructor(private router: Router) { }
 
@@ -44,11 +44,11 @@ export class CadastroComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       phone: new FormControl('', Validators.required),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      confirmPassword: new FormControl('', Validators.required) // New field for confirm password
-    }, { validators: matchPasswordsValidator() }); // Apply custom validator to the form group
+      confirmPassword: new FormControl('', Validators.required) 
+    }, { validators: matchPasswordsValidator() }); 
   }
 
-  // Method to toggle password visibility
+ 
   togglePasswordVisibility(): void {
     this.passwordVisible = !this.passwordVisible;
   }
@@ -67,7 +67,7 @@ export class CadastroComponent implements OnInit {
 
     if (this.cadastroForm.invalid) {
       console.warn('Formulário de cadastro inválido. Verifique os campos.');
-      this.cadastroForm.markAllAsTouched(); // Mark all fields as touched to show errors
+      this.cadastroForm.markAllAsTouched(); 
       return;
     }
 

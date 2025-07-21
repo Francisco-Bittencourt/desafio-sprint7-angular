@@ -1,22 +1,21 @@
-// src/app/comparacao-veiculos/comparacao.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-// Interface para definir a estrutura de um carro
+
 interface Car {
   nome: string;
   preco: number;
-  alturaCacamba: number; // Para SUVs/Carros, considere 0 ou altura relevante do compartimento
+  alturaCacamba: number; 
   alturaVeiculo: number;
   alturaSolo: number;
-  capacidadeCarga: number; // Para SUVs/Carros, considere capacidade de carga útil em Kg
-  motor: number | string; // Pode ser 2.0, 5.0 V8, etc.
+  capacidadeCarga: number; 
+  motor: number | string; 
   potencia: number;
-  volumeCacamba: number; // Para SUVs/Carros, considere volume do porta-malas em Litros
+  volumeCacamba: number; 
   roda: string;
   image: string;
-  vin: string; // Número de Identificação do Veículo (VIN)
-  // NOVAS PROPRIEDADES ADICIONADAS
+  vin: string; 
   id: number;
   odometro: number;
   nivelCombustivel: number;
@@ -37,10 +36,10 @@ export class ComparacaoComponent implements OnInit {
   showCompareModal: boolean = false;
   message: string | null = null;
 
-  // Dados dos carros (atualizados com informações pesquisadas, caminhos de imagem mantidos e novos dados)
+  
   cars: Car[] = [
     {
-      id: 1, // ID de exemplo
+      id: 1, 
       nome: 'Ford Bronco Sport Wildtrak 2.0 EcoBoost 2022',
       preco: 203833,
       alturaCacamba: 0,
@@ -53,14 +52,14 @@ export class ComparacaoComponent implements OnInit {
       roda: 'Liga Leve 17',
       image: '/img/broncoSport.png',
       vin: '1FMDJ7B2XNGA12345',
-      odometro: 23344, // Dados de exemplo
-      nivelCombustivel: 76, // Dados de exemplo
-      status: "on", // Dados de exemplo
-      lat: -12.2322, // Dados de exemplo
-      long: -35.2314 // Dados de exemplo
+      odometro: 23344, 
+      nivelCombustivel: 76, 
+      status: "on", 
+      lat: -12.2322, 
+      long: -35.2314 
     },
     {
-      id: 2, // ID de exemplo
+      id: 2,
       nome: 'Ford Mustang Mach 1 5.0 V8 2022',
       preco: 483000,
       alturaCacamba: 0,
@@ -73,14 +72,14 @@ export class ComparacaoComponent implements OnInit {
       roda: 'Liga Leve 19',
       image: '/img/mustang.png',
       vin: '1FAHP2F2XNGA67890',
-      odometro: 15678, // Dados de exemplo
-      nivelCombustivel: 85, // Dados de exemplo
-      status: "on", // Dados de exemplo
-      lat: -12.5678, // Dados de exemplo
-      long: -35.9876 // Dados de exemplo
+      odometro: 15678, 
+      nivelCombustivel: 85, 
+      status: "on", 
+      lat: -12.5678, 
+      long: -35.9876 
     },
     {
-      id: 3, // ID de exemplo
+      id: 3, 
       nome: 'Ford Ranger XLS 2.2 Diesel 4X4 AT CD 2022',
       preco: 158365,
       alturaCacamba: 511,
@@ -93,14 +92,14 @@ export class ComparacaoComponent implements OnInit {
       roda: 'Liga Leve 16',
       image: '/img/ranger.png',
       vin: '3FMPU7A2XNGA11223',
-      odometro: 45123, // Dados de exemplo
-      nivelCombustivel: 60, // Dados de exemplo
-      status: "on", // Dados de exemplo
-      lat: -13.1122, // Dados de exemplo
-      long: -36.4455 // Dados de exemplo
+      odometro: 45123, 
+      nivelCombustivel: 60, 
+      status: "on", 
+      lat: -13.1122, 
+      long: -36.4455 
     },
     {
-      id: 4, // ID de exemplo
+      id: 4, 
       nome: 'Ford Territory Titanium 1.5 EcoBoost 2022',
       preco: 216120,
       alturaCacamba: 0,
@@ -113,11 +112,11 @@ export class ComparacaoComponent implements OnInit {
       roda: 'Liga Leve 18',
       image: '/img/territory.png',
       vin: 'LSJBP7B2XNGA44556',
-      odometro: 18901, // Dados de exemplo
-      nivelCombustivel: 92, // Dados de exemplo
-      status: "off", // Dados de exemplo
-      lat: -12.8765, // Dados de exemplo
-      long: -35.1234 // Dados de exemplo
+      odometro: 18901, 
+      nivelCombustivel: 92, 
+      status: "off", 
+      lat: -12.8765, 
+      long: -35.1234 
     }
   ];
 

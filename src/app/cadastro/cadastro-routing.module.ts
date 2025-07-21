@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router'; // Importe RouterModule e Routes
-import { CadastroComponent } from './cadastro.component'; // Importe o componente que será roteado
+import { RouterModule, Routes } from '@angular/router'; 
+import { CadastroComponent } from './cadastro.component'; 
 
-// Defina as rotas do seu módulo de cadastro
+
 const routes: Routes = [
-  { path: '', component: CadastroComponent } // Exemplo: A rota padrão para este módulo aponta para CadastroComponent
+  { path: '', component: CadastroComponent } 
 ];
 
 @NgModule({
-  declarations: [], // Geralmente vazio para RoutingModules
+  declarations: [], 
   imports: [
-    RouterModule.forChild(routes) // Use forChild para módulos de feature
+    RouterModule.forChild(routes) 
   ],
   exports: [
-    RouterModule // Exporte RouterModule para que as rotas fiquem disponíveis
+    RouterModule 
   ]
 })
 export class CadastroRoutingModule { }

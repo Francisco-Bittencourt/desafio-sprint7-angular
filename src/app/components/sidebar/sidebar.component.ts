@@ -11,7 +11,6 @@ export class SidebarComponent {
 
   constructor(private router: Router) {}
 
-  // Método testDrive agora navega para a nova rota
   testDrive() {
     this.router.navigate(['/test-drive']);
     console.log('Navegando para a página de Test-Drive...');

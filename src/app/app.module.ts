@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
-    // GARANTA QUE CadastroComponent NÃO ESTÁ NESTA LISTA
+    
   ],
   imports: [
     BrowserModule,

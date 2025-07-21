@@ -1,4 +1,4 @@
-/* Seu CSS existente */
+
 .card {
   border-radius: 10px;
 }
@@ -138,7 +138,7 @@ footer {
   transition: filter 0.3s ease;
 }
 
-/* Media query para dispositivos móveis: rolagem vertical ativada */
+
 @media (max-width: 768px) {
   #compare {
     overflow-y: auto;
@@ -154,14 +154,13 @@ footer {
   }
 }
 
-/* --- NOVO CSS ADICIONADO AQUI --- */
-/* Diminui a largura da div que contém os botões e centraliza-a */
+
 .botoes-navegacao {
-  max-width: 300px; /* Ajuste este valor (ex: 250px, 350px) para a largura desejada */
-  margin: 20px auto 0 auto; /* Centraliza a div e adiciona margem superior para espaçamento */
+  max-width: 300px;
+  margin: 20px auto 0 auto;
 }
 
-/* Garante que os botões dentro de 'botoes-navegacao' ocupem toda a largura disponível */
+
 .botoes-navegacao .btn {
   width: 100%;
 }

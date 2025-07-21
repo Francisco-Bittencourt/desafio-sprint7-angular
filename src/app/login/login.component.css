@@ -1,4 +1,4 @@
-/* Seu CSS existente */
+
 
 /* DIV PRINCIPAL */
 .papai {
@@ -11,8 +11,8 @@
 /* IMAGEM DO CARRO */
 .img-ford {
   flex: 1;
-  min-width: 400px;         /* Garante espaço mínimo pro carro */
-  max-width: 60%;           /* Impede que tome a tela toda */
+  min-width: 400px;        
+  max-width: 60%;          
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,13 +20,13 @@
 }
 
 .img-ford img {
-  width: 100%;              /* Ocupa todo o espaço da div pai */
-  max-width: 600px;         /* Tamanho máximo ideal */
+  width: 100%;            
+  max-width: 600px;         
   height: auto;
 }
 
 
-/* FORMULÁRIO À DIREITA */
+
 .container-form {
   width: 40%;
   height: 100vh;
@@ -58,7 +58,7 @@
   text-align: center;
 }
 
-/* CAMPOS */
+
 .forms form {
   width: 100%;
   display: flex;
@@ -93,7 +93,7 @@
 /* BOTÃO */
 button {
   padding: 10px;
-  background-color: #bfc3c5; /* Cor padrão, será sobrescrita pelas classes Bootstrap */
+  background-color: #bfc3c5; 
   color: #000;
   border: none;
   border-radius: 5px;
@@ -101,8 +101,8 @@ button {
   font-size: 15px;
   cursor: pointer;
   transition: background-color 0.3s;
-  /* Adição para consistência entre os botões */
-  margin-bottom: 10px; /* Adiciona um pequeno espaço entre os botões, se não for já gerenciado por Bootstrap */
+  
+  margin-bottom: 10px; 
 }
 
 button:hover {

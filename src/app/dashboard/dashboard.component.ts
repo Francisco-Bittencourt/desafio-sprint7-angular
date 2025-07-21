@@ -6,7 +6,7 @@ import { Veiculo, VeiculosAPI } from '../models/veiculo.model';
 import { VehicleData } from '../models/vehicleData.model';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
-import { Router } from '@angular/router'; // Garanta que o Router está importado
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-dashboard',
@@ -117,10 +117,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
   }
 
-  // Método para navegação para a Home (já estava aqui)
+ 
   toHome(): void {
     this.router.navigate(['/home']);
-    // Fechar o offcanvas após navegação
+    
     const offcanvasElement = document.getElementById('offcanvasNavbar');
     if (offcanvasElement) {
       const bsOffcanvas = (window as any).bootstrap.Offcanvas.getInstance(offcanvasElement);
@@ -130,13 +130,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
   }
 
-  // Novo método para Logout
+  
   toLogout(): void {
     console.log('Logout clicado! Implemente sua lógica de logout aqui.');
-    // Exemplo: Limpar token de autenticação, etc.
-    // Navegar para a página de login
+   
     this.router.navigate(['/login']); 
-    // Fechar o offcanvas
+    
     const offcanvasElement = document.getElementById('offcanvasNavbar');
     if (offcanvasElement) {
       const bsOffcanvas = (window as any).bootstrap.Offcanvas.getInstance(offcanvasElement);
