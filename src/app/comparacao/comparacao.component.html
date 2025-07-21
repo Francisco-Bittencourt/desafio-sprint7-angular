@@ -1,6 +1,4 @@
-<!-- src/app/comparacao-veiculos/comparacao.component.html -->
 <div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
-  <!-- O modal de comparação é movido para ser um irmão do card principal -->
   <div id="compare" [style.display]="showCompareModal ? 'block' : 'none'">
     <table>
       <tbody>
@@ -9,93 +7,75 @@
           <td *ngFor="let car of selectedCarsForComparison; let i = index">
             <img [src]="car.image" width="100" alt="{{ car.nome }}">
           </td>
-          <!-- Removido: Preenchimento de colunas vazias -->
-        </tr>
+          </tr>
         <tr>
           <td>Modelo</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.nome }}</td>
-          <!-- Removido: Preenchimento de colunas vazias -->
-        </tr>
+          </tr>
         <tr>
           <td>VIN</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.vin }}</td>
-          <!-- Removido: Preenchimento de colunas vazias -->
-        </tr>
+          </tr>
         <tr>
           <td>ID</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.id }}</td>
-          <!-- Removido: Preenchimento de colunas vazias -->
-        </tr>
+          </tr>
         <tr>
           <td>Odômetro</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.odometro | number }} Km</td>
-          <!-- Removido: Preenchimento de colunas vazias -->
-        </tr>
+          </tr>
         <tr>
           <td>Nível Combustível</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.nivelCombustivel }}%</td>
-          <!-- Removido: Preenchimento de colunas vazias -->
-        </tr>
+          </tr>
         <tr>
           <td>Status</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.status === 'on' ? 'Ligado' : 'Desligado' }}</td>
-          <!-- Removido: Preenchimento de colunas vazias -->
-        </tr>
+          </tr>
         <tr>
           <td>Latitude</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.lat }}</td>
-          <!-- Removido: Preenchimento de colunas vazias -->
-        </tr>
+          </tr>
         <tr>
           <td>Longitude</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.long }}</td>
-          <!-- Removido: Preenchimento de colunas vazias -->
-        </tr>
+          </tr>
         <tr>
           <td>Altura da caçamba (mm)</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.alturaCacamba === 0 ? 'N/A' : car.alturaCacamba }}</td>
-          <!-- Removido: Preenchimento de colunas vazias -->
-        </tr>
+          </tr>
         <tr>
           <td>Altura do veículo (mm)</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.alturaVeiculo }}</td>
-          <!-- Removido: Preenchimento de colunas vazias -->
-        </tr>
+          </tr>
         <tr>
           <td>Altura livre do solo (mm)</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.alturaSolo }}</td>
-          <!-- Removido: Preenchimento de colunas vazias -->
-        </tr>
+          </tr>
         <tr>
           <td>Capacidade de carga (Kg)</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.capacidadeCarga }}</td>
-          <!-- Removido: Preenchimento de colunas vazias -->
-        </tr>
+          </tr>
         <tr>
           <td>Motor</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.motor }}</td>
-          <!-- Removido: Preenchimento de colunas vazias -->
-        </tr>
+          </tr>
         <tr>
           <td>Potência (cv)</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.potencia }}</td>
-          <!-- Removido: Preenchimento de colunas vazias -->
-        </tr>
+          </tr>
         <tr>
           <td>Volume de caçamba (L)</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.volumeCacamba }}</td>
-          <!-- Removido: Preenchimento de colunas vazias -->
-        </tr>
+          </tr>
         <tr>
           <td>Roda</td>
           <td *ngFor="let car of selectedCarsForComparison">{{ car.roda }}</td>
-          <!-- Removido: Preenchimento de colunas vazias -->
-        </tr>
+          </tr>
         <tr>
           <td>Preço</td>
           <td *ngFor="let car of selectedCarsForComparison">R$ {{ car.preco | number:'1.2-2' }}</td>
-          <!-- Removido: Preenchimento de colunas vazias -->
-        </tr>
+          </tr>
       </tbody>
     </table>
     <div style="text-align: center;padding-bottom: 20px;">
@@ -103,7 +83,6 @@
     </div>
   </div>
 
-  <!-- O card principal agora receberá o desfoque -->
   <div class="card p-5 shadow-sm text-center"
        [class.blurred-background]="showCompareModal"
        style="max-width: 90%; width: 100%;">
@@ -111,7 +90,6 @@
     <br>
     <br>
 
-    <!-- Mensagens de Alerta Personalizadas -->
     <div *ngIf="message" class="alert alert-warning alert-dismissible fade show" role="alert">
       {{ message }}
       <button type="button" class="btn-close" (click)="message = null" aria-label="Close"></button>
@@ -140,15 +118,13 @@
       </div>
     </main>
 
-    <!-- Footer integrado -->
     <footer>
       <div>
         <img src="/img/ford.png" width="70" alt="Logo Ford" />
       </div>
     </footer>
 
-    <!-- Botões de Navegação Restaurados -->
-    <div class="d-grid gap-2 mt-4">
+    <div class="d-grid gap-2 mt-4 botoes-navegacao">
       <button type="button" class="btn btn-primary" (click)="goToDashboard()">Voltar para o Dashboard</button>
       <button type="button" class="btn btn-outline-secondary" (click)="goToTestDrive()">Ir para Test Drive</button>
     </div>
