@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 
-
 export function matchPasswordsValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
     const password = control.get('password');
@@ -39,15 +38,14 @@ export class CadastroComponent implements OnInit {
 
   ngOnInit(): void {
     this.cadastroForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email]),
      
+      name: new FormControl('', [Validators.required, Validators.maxLength(25)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       phone: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       confirmPassword: new FormControl('', Validators.required)
     }, { validators: matchPasswordsValidator() });
   }
-
 
   togglePasswordVisibility(): void {
     this.passwordVisible = !this.passwordVisible;
@@ -71,6 +69,7 @@ export class CadastroComponent implements OnInit {
       return;
     }
 
+   
     const username = this.cadastroForm.value.name;
     const password = this.cadastroForm.value.password;
 
@@ -85,6 +84,7 @@ export class CadastroComponent implements OnInit {
         users = [];
       }
     }
+
 
     const userAlreadyExists = users.some(user => user.username.toLowerCase() === username.toLowerCase());
 

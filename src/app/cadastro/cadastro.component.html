@@ -1,14 +1,13 @@
-
 <div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
   <div class="card p-5 shadow-sm" style="max-width: 500px; width: 100%;">
     <h2 class="text-center text-primary mb-4">Página de Cadastro</h2>
 
     <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
       <div class="mb-3">
-        <label for="name" class="form-label">Nome Completo</label>
-        <input type="text" class="form-control rounded" id="name" formControlName="name" placeholder="Seu nome completo">
+        <label for="name" class="form-label">Nome e Sobrenome</label>
+        <input type="text" class="form-control rounded" id="name" formControlName="name" placeholder="Seu nome e sobrenome" maxlength="25">
         <div *ngIf="cadastroForm.get('name')?.invalid && (cadastroForm.get('name')?.dirty || cadastroForm.get('name')?.touched)" class="text-danger small mt-1">
-          Nome é obrigatório.
+          Nome e Sobrenome é obrigatório.
         </div>
       </div>
 
@@ -23,10 +22,8 @@
 
       <div class="mb-3">
         <label for="phone" class="form-label">Celular</label>
-       
         <input type="tel" class="form-control rounded" id="phone" formControlName="phone" placeholder="(XX) XXXXX-XXXX" maxlength="11" minlength="11">
         <div *ngIf="cadastroForm.get('phone')?.invalid && (cadastroForm.get('phone')?.dirty || cadastroForm.get('phone')?.touched)" class="text-danger small mt-1">
-         
           <span *ngIf="cadastroForm.get('phone')?.errors?.['required']">Celular é obrigatório.</span>
           <span *ngIf="cadastroForm.get('phone')?.errors?.['minlength'] || cadastroForm.get('phone')?.errors?.['maxlength']">O celular deve ter 11 dígitos.</span>
         </div>
