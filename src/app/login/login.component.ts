@@ -1,6 +1,12 @@
-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+
+interface User {
+  username: string; 
+  password: string;
+  displayName: string; 
+}
 
 @Component({
   selector: 'app-login',
@@ -9,7 +15,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  nome: string = '';
+  email: string = ''; 
   senha: string = '';
   lembrar: boolean = false;
   errorMessage: string = '';
@@ -23,53 +29,59 @@ export class LoginComponent implements OnInit {
 
   fazerLogin(): void {
     this.errorMessage = ''; 
-
     
     const usersJson = localStorage.getItem('registeredUsers');
-    let users: { username: string, password: string }[] = [];
+    let users: User[] = [];
 
     if (usersJson) {
-      users = JSON.parse(usersJson);
+      try {
+        users = JSON.parse(usersJson);
+      } catch (e) {
+        console.error('Erro ao parsear usuários do localStorage:', e);
+        users = [];
+      }
     }
-   
-
+    
     console.log('Tentativa de login com:');
-    console.log('  Nome digitado:', this.nome);
-    console.log('  Senha digitada:', this.senha);
+    console.log('   E-mail digitado:', this.email);
+    console.log('   Senha digitada:', this.senha);
     console.log('Lista de usuários RECUPERADA do localStorage:', users);
 
     let isAuthenticated = false;
-    let loggedInUsername = '';
+    let loggedInIdentifier = ''; 
+    let loggedInDisplayName = ''; 
 
- 
     for (const user of users) {
-      if (this.nome === user.username && this.senha === user.password) {
+      if (this.email.toLowerCase() === user.username.toLowerCase() && this.senha === user.password) { 
         isAuthenticated = true;
-        loggedInUsername = user.username;
+        loggedInIdentifier = user.username; 
+        loggedInDisplayName = user.displayName; 
         break; 
       }
     }
 
     
-    if (!isAuthenticated && this.nome === 'admin' && this.senha === '123456') {
+    if (!isAuthenticated && this.email.toLowerCase() === 'admin@example.com' && this.senha === '123456') { 
       isAuthenticated = true;
-      loggedInUsername = this.nome;
+      loggedInIdentifier = this.email;
+      loggedInDisplayName = 'Administrador'; 
     }
     
-
     if (isAuthenticated) {
-      console.log(`Login bem-sucedido para o usuário '${loggedInUsername}'! Redirecionando para /home...`);
+      console.log(`Login bem-sucedido para o usuário '${loggedInDisplayName}'! Redirecionando para /home...`);
       if (this.lembrar) {
         localStorage.setItem('loggedIn', 'true');
-        localStorage.setItem('username', loggedInUsername);
+        localStorage.setItem('username', loggedInIdentifier); 
+        localStorage.setItem('displayName', loggedInDisplayName); 
       } else {
         sessionStorage.setItem('loggedIn', 'true');
-        sessionStorage.setItem('username', loggedInUsername);
+        sessionStorage.setItem('username', loggedInIdentifier);
+        sessionStorage.setItem('displayName', loggedInDisplayName); 
       }
       this.router.navigate(['/home']);
     } else {
       console.log('Tentativa de login falhou. Credenciais inválidas.');
-      this.errorMessage = 'Usuário ou senha inválidos.';
+      this.errorMessage = 'E-mail ou senha inválidos.';
     }
   }
 

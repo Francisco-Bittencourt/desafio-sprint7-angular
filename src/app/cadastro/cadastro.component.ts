@@ -2,6 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 
+
+interface User {
+  username: string; 
+  password: string;
+  displayName: string; 
+}
+
 export function matchPasswordsValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
     const password = control.get('password');
@@ -38,7 +45,6 @@ export class CadastroComponent implements OnInit {
 
   ngOnInit(): void {
     this.cadastroForm = new FormGroup({
-     
       name: new FormControl('', [Validators.required, Validators.maxLength(25)]),
       email: new FormControl('', [Validators.required, Validators.email]),
       phone: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]),
@@ -70,11 +76,13 @@ export class CadastroComponent implements OnInit {
     }
 
    
-    const username = this.cadastroForm.value.name;
+    const username = this.cadastroForm.value.email;
     const password = this.cadastroForm.value.password;
 
+    const displayName = this.cadastroForm.value.name;
+
     const usersJson = localStorage.getItem('registeredUsers');
-    let users: { username: string, password: string }[] = [];
+    let users: User[] = []; 
 
     if (usersJson) {
       try {
@@ -85,22 +93,24 @@ export class CadastroComponent implements OnInit {
       }
     }
 
-
+   
     const userAlreadyExists = users.some(user => user.username.toLowerCase() === username.toLowerCase());
 
     if (userAlreadyExists) {
-      this.userExistsError = `O usuário(a) "${username}" já está cadastrado(a).`;
-      console.warn(`Cadastro negado: Usuário "${username}" já existe.`);
+      this.userExistsError = `O e-mail "${username}" já está cadastrado(a).`;
+      console.warn(`Cadastro negado: E-mail "${username}" já existe.`);
       return;
     }
 
-    users.push({ username: username, password: password });
+   
+    users.push({ username: username, password: password, displayName: displayName });
     localStorage.setItem('registeredUsers', JSON.stringify(users));
 
-    this.registeredName = username;
+    this.registeredName = displayName; 
     this.cadastroSuccess = true;
 
     localStorage.setItem('username', username);
+    localStorage.setItem('displayName', displayName);
     localStorage.setItem('isLoggedIn', 'true');
 
     console.log('Novo usuário cadastrado e lista atualizada no localStorage:');

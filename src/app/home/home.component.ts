@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -18,27 +17,30 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.currentYear = new Date().getFullYear(); 
 
-   
-    this.userName = localStorage.getItem('username'); 
+    
+    this.userName = localStorage.getItem('displayName'); 
+  
     if (!this.userName) {
-      this.userName = sessionStorage.getItem('username');
+      this.userName = sessionStorage.getItem('displayName');
     }
 
-    
     if (!this.userName) {
-      console.log('Usuário não logado, redirecionando para login...');
+      console.log('Usuário não logado ou nome de exibição não encontrado, redirecionando para login...');
       this.router.navigate(['/login']);
     } else {
-      console.log('Usuário logado:', this.userName);
+      console.log('Usuário logado (nome de exibição):', this.userName);
     }
   }
 
   logout(): void {
     
     localStorage.removeItem('loggedIn');
-    localStorage.removeItem('username');
+    localStorage.removeItem('username'); 
+    localStorage.removeItem('displayName'); 
+
     sessionStorage.removeItem('loggedIn');
     sessionStorage.removeItem('username');
+    sessionStorage.removeItem('displayName');
 
     console.log('Logout realizado. Redirecionando para login...');
     this.router.navigate(['/login']);
