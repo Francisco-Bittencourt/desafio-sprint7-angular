@@ -1,7 +1,8 @@
+
 <div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
   <div class="card p-5 shadow-sm" style="max-width: 500px; width: 100%;">
     <h2 class="text-center text-primary mb-4">Página de Cadastro</h2>
-    
+
     <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
       <div class="mb-3">
         <label for="name" class="form-label">Nome Completo</label>
@@ -22,9 +23,12 @@
 
       <div class="mb-3">
         <label for="phone" class="form-label">Celular</label>
-        <input type="tel" class="form-control rounded" id="phone" formControlName="phone" placeholder="(XX) XXXXX-XXXX">
+       
+        <input type="tel" class="form-control rounded" id="phone" formControlName="phone" placeholder="(XX) XXXXX-XXXX" maxlength="11" minlength="11">
         <div *ngIf="cadastroForm.get('phone')?.invalid && (cadastroForm.get('phone')?.dirty || cadastroForm.get('phone')?.touched)" class="text-danger small mt-1">
-          Celular é obrigatório.
+         
+          <span *ngIf="cadastroForm.get('phone')?.errors?.['required']">Celular é obrigatório.</span>
+          <span *ngIf="cadastroForm.get('phone')?.errors?.['minlength'] || cadastroForm.get('phone')?.errors?.['maxlength']">O celular deve ter 11 dígitos.</span>
         </div>
       </div>
 
@@ -55,12 +59,12 @@
         <div *ngIf="cadastroForm.get('confirmPassword')?.invalid && (cadastroForm.get('confirmPassword')?.dirty || cadastroForm.get('confirmPassword')?.touched)" class="text-danger small mt-1">
           <span *ngIf="cadastroForm.get('confirmPassword')?.errors?.['required']">Confirmação de senha é obrigatória.</span>
         </div>
-    
+
         <div *ngIf="cadastroForm.errors?.['mismatch'] && (cadastroForm.get('confirmPassword')?.dirty || cadastroForm.get('confirmPassword')?.touched)" class="text-danger small mt-1">
           Senhas não conferem.
         </div>
       </div>
-      
+
       <div class="mb-3 mt-4">
         <h6 class="text-muted">Acordo de Usuário</h6>
         <div class="form-check">
@@ -69,15 +73,15 @@
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input rounded" id="privacyPolicy" [(ngModel)]="privacyPolicyAccepted" name="privacyPolicy" [ngModelOptions]="{standalone: true}" required>
-          <label class="form-check-label" for="privacyPolicy">Li e aceito a <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709compilado.htm" target="_blank" class="text-primary text-decoration-underline">Política de Privacidade</a>.</label>
+          <label class="form-check-label" for="privacyPolicy">Li e aceito a <a href="https://www.ford.com.br/politica-de-privacidade/" target="_blank" class="text-primary text-decoration-underline">Política de Privacidade</a>.</label>
         </div>
         <div *ngIf="termsError" class="text-danger small mt-2">{{ termsError }}</div>
       </div>
       <div class="d-grid gap-2">
-        <button 
+        <button
           *ngIf="!cadastroSuccess"
-          type="submit" 
-          class="btn btn-success mt-3 rounded" 
+          type="submit"
+          class="btn btn-success mt-3 rounded"
           [disabled]="cadastroForm.invalid || !termsAndConditionsAccepted || !privacyPolicyAccepted"
         >
           Cadastrar
@@ -87,7 +91,7 @@
           *ngIf="cadastroSuccess"
           type="button"
           class="btn btn-success mt-3 rounded"
-          (click)="irParaHome()" 
+          (click)="irParaHome()"
         >
           Ir para Home
         </button>

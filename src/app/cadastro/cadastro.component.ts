@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
@@ -34,7 +33,7 @@ export class CadastroComponent implements OnInit {
   termsError: string = '';
 
   userExistsError: string = '';
-  passwordVisible: boolean = false; 
+  passwordVisible: boolean = false;
 
   constructor(private router: Router) { }
 
@@ -42,13 +41,14 @@ export class CadastroComponent implements OnInit {
     this.cadastroForm = new FormGroup({
       name: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
-      phone: new FormControl('', Validators.required),
+     
+      phone: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      confirmPassword: new FormControl('', Validators.required) 
-    }, { validators: matchPasswordsValidator() }); 
+      confirmPassword: new FormControl('', Validators.required)
+    }, { validators: matchPasswordsValidator() });
   }
 
- 
+
   togglePasswordVisibility(): void {
     this.passwordVisible = !this.passwordVisible;
   }
@@ -67,7 +67,7 @@ export class CadastroComponent implements OnInit {
 
     if (this.cadastroForm.invalid) {
       console.warn('Formulário de cadastro inválido. Verifique os campos.');
-      this.cadastroForm.markAllAsTouched(); 
+      this.cadastroForm.markAllAsTouched();
       return;
     }
 
@@ -94,7 +94,7 @@ export class CadastroComponent implements OnInit {
       return;
     }
 
-    users.push({ username: username, password: password }); 
+    users.push({ username: username, password: password });
     localStorage.setItem('registeredUsers', JSON.stringify(users));
 
     this.registeredName = username;
