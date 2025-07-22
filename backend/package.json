@@ -1,0 +1,18 @@
+{
+  "name": "desafio-sprint7-backend",
+  "version": "1.0.0",
+  "description": "Backend API para o Desafio Sprint 7",
+  "main": "api.js",
+  "scripts": {
+    "start": "node api.js", 
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Francisco Bittencourt",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "path": "^0.12.7"
+  }
+}
