@@ -1,14 +1,9 @@
 const express = require("express");
-const path = require("path");
 const cors = require("cors");
 
 const app = express();
-
 app.use(cors());
-
 app.use(express.json());
-
-app.use(express.static(path.join(__dirname)));
 
 class ApiError extends Error {
   constructor(message, statusCode = 500) {
@@ -54,7 +49,7 @@ app.get("/vehicles", (req, res, next) => {
         volumetotal: 145760,
         connected: 70000,
         softwareUpdates: 27550,
-        img: "http://localhost:3001/img/ranger.png",
+        img: "/img/ranger.png",
       },
       {
         id: 2,
@@ -62,7 +57,7 @@ app.get("/vehicles", (req, res, next) => {
         volumetotal: 1500,
         connected: 500,
         softwareUpdates: 750,
-        img: "http://localhost:3001/img/mustang.png",
+        img: "/img/mustang.png",
       },
       {
         id: 3,
@@ -70,7 +65,7 @@ app.get("/vehicles", (req, res, next) => {
         volumetotal: 4560,
         connected: 4000,
         softwareUpdates: 3050,
-        img: "http://localhost:3001/img/territory.png",
+        img: "/img/territory.png",
       },
       {
         id: 4,
@@ -78,7 +73,7 @@ app.get("/vehicles", (req, res, next) => {
         volumetotal: 7560,
         connected: 4060,
         softwareUpdates: 2050,
-        img: "http://localhost:3001/img/broncoSport.png",
+        img: "/img/broncoSport.png",
       },
     ];
 
@@ -92,70 +87,30 @@ app.post("/vehicleData", (req, res, next) => {
   try {
     const { vin } = req.body;
 
-    switch (vin) {
-      case "2FRHDUYS2Y63NHD22454":
-        return res.status(200).json({
-          id: 1,
-          odometro: 23344,
-          nivelCombustivel: 76,
-          status: "on",
-          lat: -12.2322,
-          long: -35.2314,
-        });
+    const data = {
+      "2FRHDUYS2Y63NHD22454": {
+        id: 1, odometro: 23344, nivelCombustivel: 76, status: "on", lat: -12.2322, long: -35.2314,
+      },
+      "2RFAASDY54E4HDU34874": {
+        id: 2, odometro: 130000, nivelCombustivel: 19, status: "off", lat: -12.2322, long: -35.2314,
+      },
+      "2FRHDUYS2Y63NHD22455": {
+        id: 3, odometro: 50000, nivelCombustivel: 90, status: "on", lat: -12.2322, long: -35.2314,
+      },
+      "2RFAASDY54E4HDU34875": {
+        id: 4, odometro: 10000, nivelCombustivel: 25, status: "off", lat: -12.2322, long: -35.2314,
+      },
+      "2FRHDUYS2Y63NHD22654": {
+        id: 5, odometro: 23544, nivelCombustivel: 76, status: "on", lat: -12.2322, long: -35.2314,
+      },
+      "2FRHDUYS2Y63NHD22854": {
+        id: 6, odometro: 23574, nivelCombustivel: 76, status: "on", lat: -12.2322, long: -35.2314,
+      }
+    };
 
-      case "2RFAASDY54E4HDU34874":
-        return res.status(200).json({
-          id: 2,
-          odometro: 130000,
-          nivelCombustivel: 19,
-          status: "off",
-          lat: -12.2322,
-          long: -35.2314,
-        });
+    if (!data[vin]) throw new ApiError("Código VIN utilizado não foi encontrado!", 400);
 
-      case "2FRHDUYS2Y63NHD22455":
-        return res.status(200).json({
-          id: 3,
-          odometro: 50000,
-          nivelCombustivel: 90,
-          status: "on",
-          lat: -12.2322,
-          long: -35.2314,
-        });
-
-      case "2RFAASDY54E4HDU34875":
-        return res.status(200).json({
-          id: 4,
-          odometro: 10000,
-          nivelCombustivel: 25,
-          status: "off",
-          lat: -12.2322,
-          long: -35.2314,
-        });
-
-      case "2FRHDUYS2Y63NHD22654":
-        return res.status(200).json({
-          id: 5,
-          odometro: 23544,
-          nivelCombustivel: 76,
-          status: "on",
-          lat: -12.2322,
-          long: -35.2314,
-        });
-
-      case "2FRHDUYS2Y63NHD22854":
-        return res.status(200).json({
-          id: 6,
-          odometro: 23574,
-          nivelCombustivel: 76,
-          status: "on",
-          lat: -12.2322,
-          long: -35.2314,
-        });
-
-      default:
-        throw new ApiError("Código VIN utilizado não foi encontrado!", 400);
-    }
+    return res.status(200).json(data[vin]);
   } catch (error) {
     next(error);
   }
@@ -166,13 +121,8 @@ app.use((err, req, res, next) => {
   const message = err.isOperational ? err.message : "Falha na comunicação com o servidor!";
 
   console.error(err);
-
-  res.status(statusCode).json({
-    message: message,
-    error: process.env.NODE_ENV === 'development' ? err.stack : undefined,
-  });
+  res.status(statusCode).json({ message });
 });
 
-app.listen(3001, () => {
-  console.log("API running on http://localhost:3001/");
-});
+// ✅ Exporta como função para o Vercel
+module.exports = app;
