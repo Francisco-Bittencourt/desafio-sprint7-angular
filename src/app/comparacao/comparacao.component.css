@@ -22,7 +22,7 @@ body {
   text-align: center;
   width: 280px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px; /* Adicionado anteriormente para arredondar os cards */
+  border-radius: 10px; 
 }
 
 .photocar {
@@ -39,8 +39,8 @@ body {
 }
 
 .checkbox {
-  /* Linha adicionada para aumentar o tamanho do checkbox */
-  transform: scale(1.5); /* Aumenta o checkbox em 50% */
+  
+  transform: scale(1.5); 
 }
 
 .info {

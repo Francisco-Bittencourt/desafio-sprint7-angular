@@ -109,9 +109,6 @@ export class TestDriveComponent implements OnInit, OnDestroy {
     this.showSuccessMessage = false;
     this.cdr.detectChanges();
 
-    console.log('--- Tentativa de Envio do Formulário ---');
-    console.log('Formulário Válido (testDriveForm.valid)?', this.testDriveForm.valid);
-    console.log('Valores do Formulário:', this.testDriveForm.value);
 
     Object.keys(this.testDriveForm.controls).forEach(key => {
       const control = this.testDriveForm.get(key);
