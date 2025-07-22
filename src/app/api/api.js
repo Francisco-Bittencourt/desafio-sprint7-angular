@@ -5,13 +5,16 @@ const cors = require("cors");
 const app = express();
 
 app.use(cors());
+
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname)));
 
+
 app.get("/", (req, res) => {
   res.send("Sua API está no ar! Use as rotas /login, /vehicles ou /vehicleData.");
 });
+
 
 app.post("/login", async (req, res) => {
   try {
@@ -51,7 +54,7 @@ app.get("/vehicles", (req, res) => {
         volumetotal: 145760,
         connected: 70000,
         softwareUpdates: 27550,
-        img: "/img/ranger.png",
+        img: "http://localhost:3001/img/ranger.png",
       },
       {
         id: 2,
@@ -59,7 +62,7 @@ app.get("/vehicles", (req, res) => {
         volumetotal: 1500,
         connected: 500,
         softwareUpdates: 750,
-        img: "/img/mustang.png",
+        img: "http://localhost:3001/img/mustang.png",
       },
       {
         id: 3,
@@ -67,7 +70,7 @@ app.get("/vehicles", (req, res) => {
         volumetotal: 4560,
         connected: 4000,
         softwareUpdates: 3050,
-        img: "/img/territory.png",
+        img: "http://localhost:3001/img/territory.png",
       },
       {
         id: 4,
@@ -75,7 +78,7 @@ app.get("/vehicles", (req, res) => {
         volumetotal: 7560,
         connected: 4060,
         softwareUpdates: 2050,
-        img: "/img/broncoSport.png",
+        img: "http://localhost:3001/img/broncoSport.png",
       },
     ];
 
@@ -164,4 +167,6 @@ app.post("/vehicleData", (req, res) => {
   }
 });
 
-module.exports = app;
+app.listen(3001, () => {
+  console.log("API running on http://localhost:3001/");
+});
