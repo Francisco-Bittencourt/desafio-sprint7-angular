@@ -26,15 +26,28 @@
 
         <div class="mb-3">
           <label for="senha" class="form-label visually-hidden">Insira sua senha</label>
-          <input
-            type="password"
-            id="senha"
-            name="senha"
-            class="form-control form-control-lg"
-            placeholder="Insira sua senha"
-            [(ngModel)]="senha"
-            required
-          />
+          <div class="input-group">
+            <input
+              [type]="senhaInputType"
+              id="senha"
+              name="senha"
+              class="form-control form-control-lg"
+              placeholder="Insira sua senha"
+              [(ngModel)]="senha"
+              required
+            />
+            <button
+              class="btn rounded-end"
+              [class.btn-outline-secondary]="senhaInputType === 'password'"
+              [class.bg-primary]="senhaInputType === 'text'"
+              type="button"
+              (click)="toggleSenhaVisibility()"
+              aria-label="Toggle password visibility"
+            >
+              <i *ngIf="senhaInputType === 'text'" class="bi bi-eye-fill fs-4 text-white"></i>
+              <i *ngIf="senhaInputType === 'password'" class="bi bi-eye-slash-fill fs-4 text-secondary"></i>
+            </button>
+          </div>
         </div>
 
         <div class="form-check mb-4">

@@ -1,5 +1,3 @@
-
-
 /* DIV PRINCIPAL */
 .papai {
   display: flex;
@@ -11,8 +9,8 @@
 /* IMAGEM DO CARRO */
 .img-ford {
   flex: 1;
-  min-width: 400px;        
-  max-width: 60%;          
+  min-width: 400px;
+  max-width: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,12 +18,10 @@
 }
 
 .img-ford img {
-  width: 100%;            
-  max-width: 600px;         
+  width: 100%;
+  max-width: 600px;
   height: auto;
 }
-
-
 
 .container-form {
   width: 40%;
@@ -43,6 +39,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* Adicionado para centralizar o formulário horizontalmente dentro do container-form se ele for mais largo */
+  margin: 0 auto;
 }
 
 /* LOGO */
@@ -58,7 +56,6 @@
   text-align: center;
 }
 
-
 .forms form {
   width: 100%;
   display: flex;
@@ -66,7 +63,8 @@
 }
 
 .forms input[type="text"],
-.forms input[type="password"] {
+.forms input[type="password"],
+.forms input[type="email"] { /* Adicionado input[type="email"] para consistência */
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
@@ -93,7 +91,7 @@
 /* BOTÃO */
 button {
   padding: 10px;
-  background-color: #bfc3c5; 
+  background-color: #bfc3c5;
   color: #000;
   border: none;
   border-radius: 5px;
@@ -101,8 +99,7 @@ button {
   font-size: 15px;
   cursor: pointer;
   transition: background-color 0.3s;
-  
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
 }
 
 button:hover {
@@ -116,13 +113,48 @@ button:hover {
   color: #777;
 }
 
-
 .terceira {
   flex: 0.03;
   background-color: #ffffff;
 }
 
-/* TABLET E CELULAR */
+/* ================================================= */
+/* MELHORIAS PARA O ÍCONE DO REVELADOR DE SENHA */
+/* ================================================= */
+
+/* Garante que o botão do input-group tenha a altura e alinhamento corretos */
+.input-group .btn {
+  display: flex;             /* Transforma o botão em um flex container */
+  align-items: center;       /* Centraliza verticalmente o conteúdo (o ícone) */
+  justify-content: center;   /* Centraliza horizontalmente o conteúdo (o ícone) */
+  padding: 0.5rem 0.75rem;   /* Ajuste o padding para dar mais espaço ao ícone */
+  /* Altura alinhada com os inputs grandes do Bootstrap: 2.875rem = 46px; +2px para bordas */
+  height: calc(2.875rem + 2px);
+  /* Remover borda lateral para melhor integração visual */
+  border-left: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Estilos para o ícone Font Awesome dentro do botão */
+.input-group .btn i {
+  font-size: 1.25rem;       /* Aumenta o tamanho do ícone (20px) */
+  line-height: 1;           /* Garante que a altura da linha não cause espaçamentos extras */
+  vertical-align: middle;   /* Ajuda a centralizar o ícone */
+  margin: 0;                /* Remove margens indesejadas */
+  padding: 0;               /* Remove padding indesejado */
+}
+
+/* Garante que o input do input-group se alinhe corretamente */
+/* Isso pode ser necessário se o input-group não estiver se comportando como esperado */
+.input-group .form-control-lg {
+  height: calc(2.875rem + 2px); /* Força a altura para bater com o botão */
+}
+
+
+/* ================================================= */
+/* MEDIA QUERIES (TABLET E CELULAR) */
+/* ================================================= */
 @media (max-width: 1024px) {
   html, body {
     height: 100%;
