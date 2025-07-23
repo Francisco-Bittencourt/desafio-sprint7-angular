@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { VeiculosAPI, Veiculo } from '../models/veiculo.model'; 
 import { VehicleData } from '../models/vehicleData.model';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment.production';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardService {
 
-  private baseUrl = 'https://api-ford-gqoj.onrender.com'
+  private baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
