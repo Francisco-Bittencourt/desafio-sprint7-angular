@@ -1,23 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { VeiculosAPI, Veiculo } from '../models/veiculo.model'; 
+import { VehicleData } from '../models/vehicleData.model';
 import { Observable } from 'rxjs';
-
-export interface VehicleData {
-  id: number;
-  odometro: number;
-  nivelCombustivel: number;
-  status: string;
-  lat: number;
-  long: number;
-}
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardService {
 
-  private baseUrl = 'http://localhost:3001'
+  private baseUrl = 'https://api-ford-gqoj.onrender.com'
 
   constructor(private http: HttpClient) { }
 
