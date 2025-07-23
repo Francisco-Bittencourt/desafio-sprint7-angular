@@ -45,7 +45,7 @@ app.post("/login", async (req, res, next) => {
   }
 });
 
-app.get("/vehicles", (req, res, next) => {
+app.get("https://meu-site-theta-gilt.vercel.app/vehicles", (req, res, next) => {
   try {
     const vehicles = [
       {
