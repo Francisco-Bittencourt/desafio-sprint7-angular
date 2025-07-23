@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { VeiculosAPI, Veiculo } from '../models/veiculo.model'; 
 import { VehicleData } from '../models/vehicleData.model';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment.production';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
